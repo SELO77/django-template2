@@ -8,6 +8,7 @@ User = get_user_model()
 class UserChangeForm(forms.UserChangeForm):
     class Meta(forms.UserChangeForm.Meta):
         model = User
+        exclude = ('first_name', 'last_name', )
 
 
 # class UserCreationForm(forms.UserCreationForm):
@@ -39,7 +40,7 @@ class UserCreationForm(forms.UserCreationForm):
     class Meta(forms.UserCreationForm.Meta):
         model = User
 
-    def clean_username(self):
+    def clean_email(self):
         email = self.cleaned_data["email"]
 
         try:

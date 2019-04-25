@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=bbakdoc
+POSTGRES_USER=xaOWTyVHFnsEidWNxRBHqmeVSmObxCVw
+POSTGRES_PASSWORD=j8NSjzKw4NpGOmUuDKqwpr5gyaKPA3ruEKOchQSqkLmKpEdQinBs2gFIW7opBMoL

@@ -17,3 +17,6 @@ django-redis==4.10.0  # https://github.com/niwinz/django-redis
 # Django REST Framework
 djangorestframework==3.9.2  # https://github.com/encode/django-rest-framework
 coreapi==2.3.3  # https://github.com/core-api/python-client
+
+# Django Channels
+channels==2.2.0 #https://channels.readthedocs.io/en/latest/installation.html

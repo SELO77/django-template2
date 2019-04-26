@@ -65,6 +65,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 # APPS
 # ------------------------------------------------------------------------------
 DJANGO_APPS = [
+    "channels",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -83,10 +84,27 @@ THIRD_PARTY_APPS = [
 ]
 LOCAL_APPS = [
     "bbakdoc.users.apps.UsersAppConfig",
+    "bbakdoc.events.apps.EventsConfig",
+    "bbakdoc.payments.apps.PaymentsConfig",
+    "bbakdoc.memberships.apps.MembershipsConfig",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+
+
+# DJANGO CHANNELS
+# https://channels.readthedocs.io/en/latest/installation.html
+ASGI_APPLICATION = "config.routing.application"
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [(env('REDIS_HOST'), env.int('REDIS_PORT'))],
+        },
+    },
+}
+
 
 # MIGRATIONS
 # ------------------------------------------------------------------------------

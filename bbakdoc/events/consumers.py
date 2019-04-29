@@ -1,7 +1,7 @@
 import json
 
 from channels.db import database_sync_to_async
-from channels.generic.websocket import AsyncWebsocketConsumer
+from channels.generic.websocket import AsyncWebsocketConsumer, WebsocketConsumer
 
 
 # @database_sync_to_async
@@ -10,6 +10,7 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 
 
 class EventConsumer(AsyncWebsocketConsumer):
+# class EventConsumer(WebsocketConsumer):
 
     async def connect(self):
         self.room_name = self.scope['url_route']['kwargs']['room_name']
@@ -33,7 +34,10 @@ class EventConsumer(AsyncWebsocketConsumer):
         text_data_json = json.loads(text_data)
         message = text_data_json['message']
 
-        email = self.scope['user'].email
+        try:
+            email = self.scope['user'].email
+        except:
+            email = "Guest"
 
         # Send message to room group
         await self.channel_layer.group_send(

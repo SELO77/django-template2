@@ -89,9 +89,19 @@
   {% endif %}
 
   {% block content %}
-    <p>Use this document as a way to quick start any new project.</p>
+    <p><h1 style="color: chartreuse">Welcome BBAKDOC!!</h1>
+    <label for="event_code-input">Event Code</label>
+    <input id="event_code-input" type="text" size="100" placeholder=" Enter Event Code"/><br/>
+    <input id="event_code-submit" type="button" value="Send"/>
+    <script type="text/javascript">
+    document.querySelector('#event_code-input').focus();
+    document.querySelector('#event_code-submit').onclick = function (e) {
+      var eventCodeDom = document.querySelector('#event_code-input');
+      var eventCode = eventCodeDom.value;
+      window.location.pathname = '/events/rooms/' + eventCode + '/';
+    };
+  </script>
   {% endblock content %}
-
 </div> <!-- /container -->
 
 {% block modal %}{% endblock modal %}
@@ -118,8 +128,6 @@
   <!-- place project specific Javascript in this file -->
 
   <script src="{% static 'js/project.js' %}"></script>
-
-
 {% endblock javascript %}
 </body>
 </html>

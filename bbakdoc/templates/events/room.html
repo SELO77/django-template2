@@ -2,40 +2,40 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-  <textarea id="chat-log" cols="100" rows="20"></textarea><br/>
-  <input id="chat-message-input" type="text" size="100"/><br/>
-  <input id="chat-message-submit" type="button" value="Send"/>
+  <h1>{{ event.title }} ({{ event.code }})</h1>
+  <textarea id="question-log" cols="100" rows="20"></textarea><br/>
+  <label for="question-message-input">Question</label>
+  <input id="question-message-input" type="text" size="100"/><br/>
+  <input id="question-message-submit" type="button" value="Send"/>
 
   <script>
-    var roomName = {{ room_name_json }};
+    var eventCode = {{ event.code }};
 
-    var chatSocket = new WebSocket(
+    var eventRoomSocket = new WebSocket(
       'ws://' + window.location.host +
-      '/ws/events/' + roomName + '/');
+      '/ws/events/' + eventCode + '/');
 
-    chatSocket.onmessage = function (e) {
+    eventRoomSocket.onmessage = function (e) {
       var data = JSON.parse(e.data);
       var message = data['message'];
-      var user = data['user'];
-      var email = data['email'];
-      document.querySelector('#chat-log').value += (email + ":" + message + '\n');
+      document.querySelector('#question-log').value += (message + '\n');
     };
 
-    chatSocket.onclose = function (e) {
+    eventRoomSocket.onclose = function (e) {
       console.error('Chat socket closed unexpectedly');
     };
 
-    document.querySelector('#chat-message-input').focus();
-    document.querySelector('#chat-message-input').onkeyup = function (e) {
+    document.querySelector('#question-message-input').focus();
+    document.querySelector('#question-message-input').onkeyup = function (e) {
       if (e.keyCode === 13) {  // enter, return
-        document.querySelector('#chat-message-submit').click();
+        document.querySelector('#question-message-submit').click();
       }
     };
 
-    document.querySelector('#chat-message-submit').onclick = function (e) {
-      var messageInputDom = document.querySelector('#chat-message-input');
+    document.querySelector('#question-message-submit').onclick = function (e) {
+      var messageInputDom = document.querySelector('#question-message-input');
       var message = messageInputDom.value;
-      chatSocket.send(JSON.stringify({
+      eventRoomSocket.send(JSON.stringify({
         'message': message
       }));
 

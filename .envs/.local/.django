@@ -1,4 +1,9 @@
-# General
-# ------------------------------------------------------------------------------
-USE_DOCKER=yes
-IPYTHONDIR=/app/.ipython
+DJANGO_SETTINGS_MODULE=config.settings.local
+USE_DOCKER=False
+DEFAULT_DB_DATABASE_NAME=bbakdoc
+DEFAULT_DB_DATABASE_USER=root
+DEFAULT_DB_DATABASE_PASS=
+DEFAULT_DB_DATABASE_HOST=db
+DEFAULT_DB_DATABASE_PORT=3306
+REDIS_HOST=cache
+REDIS_PORT=6379

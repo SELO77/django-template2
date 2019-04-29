@@ -1,8 +1,9 @@
 version: '3'
 
 volumes:
-  local_postgres_data: {}
-  local_postgres_data_backups: {}
+#  local_postgres_data: {}
+#  local_postgres_data_backups: {}
+  local_mysql_data: {}
 
 services:
   django:
@@ -11,23 +12,41 @@ services:
       dockerfile: ./compose/local/django/Dockerfile
     image: bbakdoc_local_django
     depends_on:
-      - postgres
+      - db
+      - cache
     volumes:
       - .:/app
     env_file:
       - ./.envs/.local/.django
-      - ./.envs/.local/.postgres
+#      - ./.envs/.local/.postgres
     ports:
-      - "8000:8000"
+      - 8001:8000
     command: /start
 
-  postgres:
+  db:
     build:
-      context: .
-      dockerfile: ./compose/production/postgres/Dockerfile
-    image: bbakdoc_production_postgres
+      context: ./compose/local/mysql
+      dockerfile: ./compose/local/mysql/Dockerfile
+    command: --init-file /init.sql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
     volumes:
-      - local_postgres_data:/var/lib/postgresql/data
-      - local_postgres_data_backups:/backups
-    env_file:
-      - ./.envs/.local/.postgres
+      - local_mysql_data:/var/lib/mysql
+    ports:
+      - 3307:3306
+  cache:
+    image: redis:2.8
+    ports:
+      - 6379:6379
+
+
+#  postgres:
+#    build:
+#      context: .
+#      dockerfile: ./compose/production/postgres/Dockerfile
+#    image: bbakdoc_production_postgres
+#    volumes:
+#      - local_postgres_data:/var/lib/postgresql/data
+#      - local_postgres_data_backups:/backups
+#    env_file:
+#      - ./.envs/.local/.postgres

@@ -2,22 +2,29 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-  What chat room would you like to enter?<br/>
-  <input id="room-name-input" type="text" size="100"/><br/>
-  <input id="room-name-submit" type="button" value="Enter"/>
+  <div><button>Active</button><button>Past</button></div>
+  <input id="room-name-submit" type="button" value="Create Event"/>
+
+  <hr>
+  <h1>My Events List</h1>
+  {% if my_events_list%}
+  <ul>
+    {% for event in my_events_list %}
+      <li>
+        <a href="{{ event.get_absolute_url }}"><strong>{{ event.title }}</strong></a> ({{event.code}}), active: <button>{% if event.is_active %} Deactivate {% else %} Active {% endif %}</button>
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no Events.</p>
+  {% endif %}
 
   <script>
-    document.querySelector('#room-name-input').focus();
-    document.querySelector('#room-name-input').onkeyup = function (e) {
-      if (e.keyCode === 13) {  // enter, return
-        document.querySelector('#room-name-submit').click();
-      }
+    document.querySelector('#room-name-submit').onclick = function (e) {
+      window.location.pathname = '/events/create/';
     };
 
-    document.querySelector('#room-name-submit').onclick = function (e) {
-      var roomName = document.querySelector('#room-name-input').value;
-      window.location.pathname = '/events/' + roomName + '/';
-    };
+
   </script>
 {% endblock %}
 

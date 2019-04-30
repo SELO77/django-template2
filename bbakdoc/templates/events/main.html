@@ -11,7 +11,8 @@
   <ul>
     {% for event in my_events_list %}
       <li>
-        <a href="{{ event.get_absolute_url }}"><strong>{{ event.title }}</strong></a> ({{event.code}}), active: <button>{% if event.is_active %} Deactivate {% else %} Active {% endif %}</button>
+        <a href="{{ event.get_absolute_url }}"><strong>{{ event.title }}</strong></a> ({{event.code}}),
+        <a href="/events/{{ event.id }}/activate/"><button>{% if event.is_active %} Deactivate {% else %} Activate {% endif %}</button></a>
       </li>
     {% endfor %}
   </ul>

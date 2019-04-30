@@ -9,12 +9,12 @@
   <div id="question-container">
     {% if event_questions_list %}
       {% for event_question in event_questions_list %}
-        <div>{{ event_question.questioner }}| {{ event_question.content }} : {{ event_question.likes }}</div>
+        <div>{{ event_question.questioner }} |  {{ event_question.content }} : {{ event_question.likes }}</div>
       {% endfor %}
     {% endif %}
   </div>
   <br/>
-  <label for="question-input">Question</label>
+  <label for="question-input">Question -> </label>
   <input id="question-input" type="text" size="100"/><br/>
   <input id="question-submit" type="button" value="Send"/>
 
@@ -27,7 +27,7 @@
 
     eventRoomSocket.onmessage = function (e) {
       var data = JSON.parse(e.data);
-      var text = data['questioner'] + '| ' +data['content'] +' : ' + data['likes'];
+      var text = data['questioner'] + ' |  ' +data['content'] +' : ' + data['likes'];
       var newDiv = document.createElement("DIV");
       newDiv.appendChild(document.createTextNode(text));
       document.querySelector('#question-container').appendChild(newDiv);

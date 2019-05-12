@@ -327,6 +327,5 @@ bbakdoc/media/
 
 
 .ipython/
-.env
 .envs/*
 !.envs/.local/

@@ -12,12 +12,15 @@ body {
 a {
   text-decoration: none; }
 
-input:not([type="checkbox"]),
+input,
 button {
   font-family: "Noto Sans KR", sans-serif;
   border: 0;
   background-color: transparent;
   -webkit-appearance: none; }
+
+input[type="checkbox"] {
+  -webkit-appearance: checkbox; }
 
 button {
   cursor: pointer; }

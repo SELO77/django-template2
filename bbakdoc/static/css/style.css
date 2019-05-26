@@ -1,20 +1,27 @@
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700&display=swap&subset=korean");
 body {
   margin: 0;
-  background-color: #3C507D; }
+  background-color: #3C507D;
+  font-family: "Noto Sans KR", sans-serif; }
   body * {
     margin: 0;
     padding: 0; }
   body *, body *:before, body *:after {
     box-sizing: border-box; }
 
-.container {
-  padding: 16px; }
+a {
+  text-decoration: none; }
 
 input,
 button {
+  font-family: "Noto Sans KR", sans-serif;
   border: 0;
   background-color: transparent;
   -webkit-appearance: none; }
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed; }
 
 .alert-debug {
   background-color: #fff;
@@ -34,7 +41,8 @@ button {
   height: 48px;
   font-size: 16px;
   font-weight: 700;
-  background-color: #000;
+  border-radius: 4px;
+  background-color: #0c1019;
   color: #fff; }
 
 .form-wrap {
@@ -65,12 +73,37 @@ button {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0; }
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  height: 64px; }
+  .navbar .nav-home {
+    display: block;
+    width: 40px;
+    height: 40px;
+    font-size: 0;
+    background-image: url("/static/images/img_logo_symbol.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center; }
+  .navbar .nav-list {
+    display: flex;
+    list-style: none; }
+  .navbar .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    height: 48px;
+    font-size: 14px;
+    color: #fff; }
 
-.main-page .logo {
-  display: block;
-  margin: 0 auto 24px;
-  width: 200px; }
-
-.main-page .btn-submit {
-  margin-top: 24px; }
+.main-page {
+  padding: 0 16px; }
+  .main-page .logo {
+    display: block;
+    margin: 0 auto 48px;
+    width: 150px; }
+  .main-page .btn-submit {
+    margin-top: 24px; }

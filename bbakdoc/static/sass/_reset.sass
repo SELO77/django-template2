@@ -13,7 +13,7 @@ body
 a
   text-decoration: none
 
-input,
+input:not([type="checkbox"]),
 button
   font-family: $font-set
   border: 0
@@ -21,6 +21,7 @@ button
   -webkit-appearance: none
 
 button
+  cursor: pointer
   &:disabled
     opacity: 0.4
     cursor: not-allowed

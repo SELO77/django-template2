@@ -1,11 +1,17 @@
-.btn-solid-navy
+@mixin btn-default
   display: flex
   justify-content: center
   align-items: center
   width: 100%
+  border-radius: 4px
   height: 48px
   font-size: 16px
   font-weight: 700
-  border-radius: 4px
+  transition: all 0.2s
+
+.btn-solid-navy
+  @include btn-default
   background-color: mix(black, $primary, 80%)
   color: #fff
+  @include hover
+    background-color: mix(black, $primary, 70%)

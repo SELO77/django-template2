@@ -12,16 +12,18 @@ body {
 a {
   text-decoration: none; }
 
-input,
+input:not([type="checkbox"]),
 button {
   font-family: "Noto Sans KR", sans-serif;
   border: 0;
   background-color: transparent;
   -webkit-appearance: none; }
 
-button:disabled {
-  opacity: 0.4;
-  cursor: not-allowed; }
+button {
+  cursor: pointer; }
+  button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed; }
 
 .alert-debug {
   background-color: #fff;
@@ -38,12 +40,16 @@ button:disabled {
   justify-content: center;
   align-items: center;
   width: 100%;
+  border-radius: 4px;
   height: 48px;
   font-size: 16px;
   font-weight: 700;
-  border-radius: 4px;
+  transition: all 0.2s;
   background-color: #0c1019;
   color: #fff; }
+  @media (any-hover: hover) {
+    .btn-solid-navy:hover {
+      background-color: #121826; } }
 
 .form-wrap {
   display: flex;

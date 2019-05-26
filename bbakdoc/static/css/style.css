@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700&display=swap&subset=korean");
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700&display=swap&subset=korean");
 body {
   margin: 0;
   background-color: #3C507D;
@@ -68,6 +68,8 @@ button:disabled {
   border: 1px solid #ddd;
   background-color: #fff;
   font-size: 16px; }
+  .form-input:first-of-type {
+    margin-top: 0; }
 
 .navbar {
   position: fixed;
@@ -101,9 +103,20 @@ button:disabled {
 
 .main-page {
   padding: 0 16px; }
-  .main-page .logo {
-    display: block;
-    margin: 0 auto 48px;
-    width: 150px; }
+  .main-page h1 {
+    margin-bottom: 40px;
+    text-align: center; }
+    .main-page h1 .logo {
+      display: block;
+      margin: 0 auto;
+      width: 64px; }
+    .main-page h1 span {
+      display: block;
+      margin-left: -1.5px;
+      font-size: 28px;
+      font-weight: 300;
+      color: #fff;
+      letter-spacing: 3px;
+      transform: scaleY(0.8); }
   .main-page .btn-submit {
     margin-top: 24px; }

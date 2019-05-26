@@ -1,12 +1,12 @@
-{% load static i18n %}<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>{% block title %}bbakdoc{% endblock title %}</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="author" content="">
+{% load static i18n %}
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}bbakdoc{% endblock title %}</title>
 
   <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
   <!--[if lt IE 9]>
@@ -18,91 +18,82 @@
   {% block css %}
 
     <!-- Latest compiled and minified Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+{#    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"#}
+{#          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">#}
 
 
     <!-- Your stuff: Third-party CSS libraries go here -->
 
     <!-- This file stores project-specific CSS -->
 
-    <link href="{% static 'css/project.css' %}" rel="stylesheet">
-
-
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
   {% endblock %}
-
 </head>
 
-<body>
+  <body>
+    <!-- nav -->
+    <nav class="navbar">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">bbakdoc</a>
 
-<div class="mb-1">
-  <nav class="navbar navbar-expand-md navbar-light bg-light">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="{% url 'home' %}">bbakdoc</a>
+        <div class="">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+{#              <a class="nav-link" href="{% url 'events:main' %}">Event</a>#}
+              <a class="nav-link" href="#">Event</a>
+            </li>
+            {% if request.user.is_authenticated %}
+              <li class="nav-item">
+                {# URL provided by django-allauth/account/urls.py #}
+                <a class="nav-link" href="{% url 'users:detail' request.user.id %}">{% trans "My Profile" %}</a>
+              </li>
+              <li class="nav-item">
+                {# URL provided by django-allauth/account/urls.py #}
+                <a class="nav-link" href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                {# URL provided by django-allauth/account/urls.py #}
+                <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
+              </li>
+              <li class="nav-item">
+                {# URL provided by django-allauth/account/urls.py #}
+                <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- /nav -->
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'events:main' %}">Event <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'about' %}">About</a>
-        </li>
-        {% if request.user.is_authenticated %}
-          <li class="nav-item">
-            {# URL provided by django-allauth/account/urls.py #}
-            <a class="nav-link" href="{% url 'users:detail' request.user.id %}">{% trans "My Profile" %}</a>
-          </li>
-          <li class="nav-item">
-            {# URL provided by django-allauth/account/urls.py #}
-            <a class="nav-link" href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a>
-          </li>
-        {% else %}
-          <li class="nav-item">
-            {# URL provided by django-allauth/account/urls.py #}
-            <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
-          </li>
-          <li class="nav-item">
-            {# URL provided by django-allauth/account/urls.py #}
-            <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
-          </li>
-        {% endif %}
-      </ul>
-    </div>
-  </nav>
+    <!-- container -->
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
 
-</div>
+    {% block content %}
+      <div class="main-page form-wrap">
+        <div class="container">
+          <img src="/static/images/img_logo.png" alt="BBACDOC" class="logo">
+          <input id="event_code-input" type="text" size="100" placeholder="코드를 입력하세요" class="form-input">
+          <input id="event_username-input" type="text" size="100" placeholder="닉네임을 입력하세요" class="form-input">
+          <button id="event_code-submit" type="button" class="btn-submit btn-solid-navy">Send</button>
+        </div>
+      </div>
 
-<div class="container">
-
-  {% if messages %}
-    {% for message in messages %}
-      <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
-    {% endfor %}
-  {% endif %}
-
-  {% block content %}
-    <p><h1 style="color: chartreuse">Welcome BBAKDOC!!</h1>
-    <label for="event_code-input">Event Code</label>
-    <input id="event_code-input" type="text" size="100" placeholder=" Enter Event Code"/><br/>
-    <input id="event_code-submit" type="button" value="Send"/>
-    <script type="text/javascript">
-    document.querySelector('#event_code-input').focus();
-    document.querySelector('#event_code-submit').onclick = function (e) {
-      var eventCodeDom = document.querySelector('#event_code-input');
-      var eventCode = eventCodeDom.value;
-      window.location.pathname = '/events/rooms/' + eventCode + '/';
-    };
-  </script>
-  {% endblock content %}
-</div> <!-- /container -->
+      <script type="text/javascript">
+        document.querySelector('#event_code-input').focus();
+        document.querySelector('#event_code-submit').onclick = function (e) {
+          var eventCodeDom = document.querySelector('#event_code-input');
+          var eventCode = eventCodeDom.value;
+          window.location.pathname = '/events/rooms/' + eventCode + '/';
+        };
+      </script>
+    {% endblock content %}
+    <!-- /container -->
 
 {% block modal %}{% endblock modal %}
 

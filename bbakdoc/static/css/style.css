@@ -124,8 +124,11 @@ button {
     margin-top: 16px; }
   .form-wrap .form-area {
     position: relative; }
+    .form-wrap .form-area .form-check-label {
+      display: flex;
+      align-items: center; }
     .form-wrap .form-area .form-check-input {
-      margin-right: 2px; }
+      margin-right: 4px; }
     .form-wrap .form-area .link-forgot-pw {
       position: absolute;
       right: 0;

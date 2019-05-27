@@ -78,6 +78,9 @@ button {
     margin-bottom: 0.5em;
     font-size: 28px;
     text-align: center; }
+    .form-wrap h1 + p {
+      margin-bottom: 16px;
+      font-size: 14px; }
   .form-wrap .txt-below-form {
     margin-top: 0.5em;
     width: 100%;

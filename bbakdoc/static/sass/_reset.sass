@@ -1,0 +1,30 @@
+body
+  margin: 0
+  background-color: $primary
+  font-family: $font-set
+
+  *
+    margin: 0
+    padding: 0
+
+  *, *:before, *:after
+    box-sizing: border-box
+
+a
+  text-decoration: none
+
+input,
+button
+  font-family: $font-set
+  border: 0
+  background-color: transparent
+  -webkit-appearance: none
+
+input[type="checkbox"]
+  -webkit-appearance: checkbox
+
+button
+  cursor: pointer
+  &:disabled
+    opacity: 0.4
+    cursor: not-allowed

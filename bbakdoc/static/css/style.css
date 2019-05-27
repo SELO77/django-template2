@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700&display=swap&subset=korean");
+body {
+  margin: 0;
+  background-color: #3C507D;
+  font-family: "Noto Sans KR", sans-serif; }
+  body * {
+    margin: 0;
+    padding: 0; }
+  body *, body *:before, body *:after {
+    box-sizing: border-box; }
+
+a {
+  text-decoration: none; }
+
+input,
+button {
+  font-family: "Noto Sans KR", sans-serif;
+  border: 0;
+  background-color: transparent;
+  -webkit-appearance: none; }
+
+input[type="checkbox"] {
+  -webkit-appearance: checkbox; }
+
+button {
+  cursor: pointer; }
+  button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed; }
+
+.alert-debug {
+  background-color: #fff;
+  border-color: #d6e9c6;
+  color: #000; }
+
+.alert-error {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48; }
+
+.btn-solid-navy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 4px;
+  height: 48px;
+  font-size: 16px;
+  font-weight: 700;
+  transition: all 0.2s;
+  background-color: #0c1019;
+  color: #fff; }
+  @media (any-hover: hover) {
+    .btn-solid-navy:hover {
+      background-color: #121826; } }
+
+.form-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 360px;
+  min-height: 100vh; }
+
+.form-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #222; }
+
+.form-input {
+  margin-top: 8px;
+  padding: 0 16px;
+  width: 100%;
+  height: 48px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  font-size: 16px; }
+  .form-input:first-of-type {
+    margin-top: 0; }
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  height: 64px; }
+  .navbar .nav-home {
+    display: block;
+    width: 40px;
+    height: 40px;
+    font-size: 0;
+    background-image: url("/static/images/img_logo_symbol.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center; }
+  .navbar .nav-list {
+    display: flex;
+    list-style: none; }
+  .navbar .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    height: 48px;
+    font-size: 14px;
+    color: #fff; }
+
+.main-page {
+  padding: 0 16px; }
+  .main-page h1 {
+    margin-bottom: 40px;
+    text-align: center; }
+    .main-page h1 .logo {
+      display: block;
+      margin: 0 auto;
+      width: 64px; }
+    .main-page h1 span {
+      display: block;
+      margin-left: -1.5px;
+      font-size: 28px;
+      font-weight: 300;
+      color: #fff;
+      letter-spacing: 3px;
+      transform: scaleY(0.8); }
+  .main-page .btn-submit {
+    margin-top: 24px; }

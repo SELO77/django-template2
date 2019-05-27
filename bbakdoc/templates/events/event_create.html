@@ -2,10 +2,12 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<form method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Create">
-</form>
+  <div class="container event-create-page">
+    <form method="post">{% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">이벤트 생성하기</button>
+    </form>
+  </div>
 {% endblock %}
 
 {#{% block javascript %}#}

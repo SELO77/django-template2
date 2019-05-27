@@ -2,22 +2,23 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-  <h1>{{ event.title }} ({{ event.code }})</h1>
-  <hr>
-  <p>Your name is <strong>{{ request.session.nickname }}</strong></p>
-  <hr>
-  <div id="question-container">
-    {% if event_questions_list %}
-      {% for event_question in event_questions_list %}
-        <div>{{ event_question.questioner }} |  {{ event_question.content }} : {{ event_question.likes }}</div>
-      {% endfor %}
-    {% endif %}
+  <div class="container">
+    <h1>{{ event.title }} ({{ event.code }})</h1>
+    <hr>
+    <p>Your name is <strong>{{ request.session.nickname }}</strong></p>
+    <hr>
+    <div id="question-container">
+      {% if event_questions_list %}
+        {% for event_question in event_questions_list %}
+          <div>{{ event_question.questioner }} |  {{ event_question.content }} : {{ event_question.likes }}</div>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <br/>
+    <label for="question-input">Question -> </label>
+    <input id="question-input" type="text" size="100"/><br/>
+    <input id="question-submit" type="button" value="Send"/>
   </div>
-  <br/>
-  <label for="question-input">Question -> </label>
-  <input id="question-input" type="text" size="100"/><br/>
-  <input id="question-submit" type="button" value="Send"/>
-
   <script>
     var eventCode = {{ event.code }};
 

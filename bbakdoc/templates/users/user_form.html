@@ -4,7 +4,7 @@
 {% block title %}{{ user.email }}{% endblock %}
 
 {% block content %}
-  <div class="auth-wrap form-wrap">
+  <div class="form-wrap">
     <h1>{{ user.email }}</h1>
     <form method="post" action="{% url 'users:update' %}">
       {% csrf_token %}

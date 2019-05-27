@@ -2,10 +2,13 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-  <h1>Title: {{ event.title }}</h1>
-  <p><strong>Code:</strong> <a href="">{{ event.code }}</a></p> <!-- author detail link not yet defined -->
-  <p><strong>Active:</strong> {{ event.is_active }}</p>
-  <p><strong>Past:</strong> {{ event.is_end }}</p>
+  <div class="container">
+    <h1>Title: {{ event.title }}</h1>
+    <p><strong>Code:</strong> <a href="">{{ event.code }}</a></p>
+    <!-- author detail link not yet defined -->
+    <p><strong>Active:</strong> {{ event.is_active }}</p>
+    <p><strong>Past:</strong> {{ event.is_end }}</p>
+  </div>
 {% endblock %}
 
 {#{% block javascript %}#}

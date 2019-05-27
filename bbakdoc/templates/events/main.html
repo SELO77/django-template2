@@ -2,30 +2,33 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-  <div><button>Active</button><button>Past</button></div>
-  <input id="room-name-submit" type="button" value="Create Event"/>
+  <div class="container">
+    <div>
+      <div>Active</div>
+      <div>Past</div>
+    </div>
 
-  <hr>
-  <h1>My Events List</h1>
-  {% if my_events_list%}
-  <ul>
-    {% for event in my_events_list %}
-      <li>
-        <a href="{{ event.get_absolute_url }}"><strong>{{ event.title }}</strong></a> ({{event.code}}),
-        <a href="/events/{{ event.id }}/activate/"><button>{% if event.is_active %} Deactivate {% else %} Activate {% endif %}</button></a>
-      </li>
-    {% endfor %}
-  </ul>
-  {% else %}
-    <p>There are no Events.</p>
-  {% endif %}
+    <h1>My Events List</h1>
+    {% if my_events_list%}
+      <ul>
+        {% for event in my_events_list %}
+          <li>
+            <a href="{{ event.get_absolute_url }}"><strong>{{ event.title }}</strong></a> ({{event.code}}),
+            <a href="/events/{{ event.id }}/activate/"><button>{% if event.is_active %} Deactivate {% else %} Activate {% endif %}</button></a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>There are no Events.</p>
+    {% endif %}
+  
+    <button type="button" id="room-name-submit" class="btn btn-primary">Create Event</button>
+  </div>
 
   <script>
     document.querySelector('#room-name-submit').onclick = function (e) {
       window.location.pathname = '/events/create/';
     };
-
-
   </script>
 {% endblock %}
 

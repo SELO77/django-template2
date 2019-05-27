@@ -9,6 +9,9 @@ body {
   body *, body *:before, body *:after {
     box-sizing: border-box; }
 
+ol, ul {
+  list-style: none; }
+
 a {
   text-decoration: none; }
 
@@ -34,11 +37,37 @@ button {
     opacity: 0.4;
     cursor: not-allowed; }
 
+@keyframes alert-show {
+  10%, 80% {
+    bottom: 0; } }
+
+.navbar + .alert {
+  position: fixed;
+  bottom: -100px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  border-radius: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  z-index: 1000;
+  animation: alert-show 3s; }
+
+.alert {
+  padding: 4px 8px;
+  border-radius: 2px;
+  font-size: 12px; }
+
+.alert-success,
 .alert-debug {
   background-color: #fff;
   border-color: #d6e9c6;
   color: #000; }
 
+.alert-danger,
 .alert-error {
   background-color: #f2dede;
   border-color: #eed3d7;
@@ -68,6 +97,7 @@ button {
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  padding: 0 16px;
   max-width: 360px;
   min-height: 100vh; }
   .form-wrap.auth-wrap {

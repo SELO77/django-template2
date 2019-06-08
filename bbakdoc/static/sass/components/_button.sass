@@ -2,18 +2,39 @@
   display: flex
   justify-content: center
   align-items: center
+  padding: 0 8px
   width: 100%
   border-radius: 4px
+  transition: all 0.2s
+
+@mixin btn-small
+  height: 24px
+  font-size: 14px
+
+@mixin btn-normal
+  height: 32px
+  font-size: 12px
+
+@mixin btn-large
   height: 48px
   font-size: 16px
   font-weight: 700
-  transition: all 0.2s
 
 button[class*="btn-"]
   &:focus
     outline: none
 
-body.theme1
+.btn,
+.btn-large
+  @include btn-large
+
+.btn-normal
+  @include btn-normal
+
+.btn-small
+  @include btn-small
+
+.theme1
   .btn-primary
     @include btn-default
     background-color: $purple
@@ -32,8 +53,7 @@ body.theme1
     &:focus
       background-color: $navy900
 
-
-body.theme2
+.theme2
   .btn-primary
     @include btn-default
     background-color: $mustard
@@ -43,7 +63,6 @@ body.theme2
     &:focus
       background-color: $mustard600
 
-
   .btn-secondary
     @include btn-default
     background-color: $deepblue700
@@ -52,4 +71,3 @@ body.theme2
       background-color: $deepblue900
     &:focus
       background-color: $deepblue900
-

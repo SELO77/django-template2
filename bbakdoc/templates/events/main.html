@@ -3,28 +3,37 @@
 
 {% block content %}
   <div class="container">
-    <div class="page-content">
-      <h1 class="page-title">My Events List</h1>
+    <div class="page-content my-events-page">
+      <h1 class="page-header">My Events</h1>
 
-      <div class="tab-menu">
-        <div class="tab-item">Active</div>
-        <div class="tab-item">Past</div>
+      <div class="page-body">
+        <div class="ui-tab">
+          <div class="ui-tab-item is-active">Active</div>
+          <div class="ui-tab-item">Past</div>
+        </div>
+
+        {% if my_events_list%}
+          <ul class="event-list">
+            {% for event in my_events_list %}
+              <li class="event-item">
+                <a class="event-link" href="{{ event.get_absolute_url }}">
+                  <span class="event-title">{{ event.title }}</span>
+                  <span class="event-code">{{ event.code }}</span>
+                </a>
+                {% if event.is_active %}
+                  <a class="btn-normal btn-secondary btn-status" href="/events/{{ event.id }}/activate/">Deactivate</a>
+                {% else %}
+                  <a class="btn-normal btn-primary btn-status" href="/events/{{ event.id }}/activate/">Activate</a>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>There are no Events.</p>
+        {% endif %}
+
+        <button type="button" id="room-name-submit" class="btn btn-primary btn-create">Create Event</button>
       </div>
-
-      {% if my_events_list%}
-        <ul>
-          {% for event in my_events_list %}
-            <li>
-              <a href="{{ event.get_absolute_url }}"><strong>{{ event.title }}</strong></a> ({{event.code}}),
-              <a href="/events/{{ event.id }}/activate/"><button>{% if event.is_active %} Deactivate {% else %} Activate {% endif %}</button></a>
-            </li>
-          {% endfor %}
-        </ul>
-      {% else %}
-        <p>There are no Events.</p>
-      {% endif %}
-
-      <button type="button" id="room-name-submit" class="btn btn-primary">Create Event</button>
     </div>
   </div>
 

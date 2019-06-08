@@ -1,14 +1,19 @@
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700&display=swap&subset=korean");
-@import url("https://fonts.googleapis.com/css?family=Dosis&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
 #djDebug #djDebugToolbarHandle {
   top: auto !important;
   bottom: 30px; }
 
 body {
   margin: 0;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: "Roboto", "Noto Sans KR", sans-serif;
+  font-size: 14px;
+  color: #222;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
+  @media (min-width: 768px) {
+    body {
+      font-size: 16px; } }
   body * {
     margin: 0;
     padding: 0; }
@@ -32,7 +37,7 @@ legend {
 
 input[type="text"],
 button {
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: "Roboto", "Noto Sans KR", sans-serif;
   border: 0;
   background-color: transparent;
   -webkit-appearance: none; }
@@ -85,76 +90,82 @@ button {
 button[class*="btn-"]:focus {
   outline: none; }
 
-body.theme1 .btn-primary {
+.btn,
+.btn-large {
+  height: 48px;
+  font-size: 16px;
+  font-weight: 700; }
+
+.btn-normal {
+  height: 32px;
+  font-size: 12px; }
+
+.btn-small {
+  height: 24px;
+  font-size: 14px; }
+
+.theme1 .btn-primary {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 8px;
   width: 100%;
   border-radius: 4px;
-  height: 48px;
-  font-size: 16px;
-  font-weight: 700;
   transition: all 0.2s;
   background-color: #974f8c;
   color: #fff; }
   @media (any-hover: hover) {
-    body.theme1 .btn-primary:hover {
+    .theme1 .btn-primary:hover {
       background-color: #88477e; } }
-  body.theme1 .btn-primary:focus {
+  .theme1 .btn-primary:focus {
     background-color: #88477e; }
 
-body.theme1 .btn-secondary {
+.theme1 .btn-secondary {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 8px;
   width: 100%;
   border-radius: 4px;
-  height: 48px;
-  font-size: 16px;
-  font-weight: 700;
   transition: all 0.2s;
   background-color: #2a2a46;
   color: #fff; }
   @media (any-hover: hover) {
-    body.theme1 .btn-secondary:hover {
+    .theme1 .btn-secondary:hover {
       background-color: #1f2035; } }
-  body.theme1 .btn-secondary:focus {
+  .theme1 .btn-secondary:focus {
     background-color: #1f2035; }
 
-body.theme2 .btn-primary {
+.theme2 .btn-primary {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 8px;
   width: 100%;
   border-radius: 4px;
-  height: 48px;
-  font-size: 16px;
-  font-weight: 700;
   transition: all 0.2s;
   background-color: #efd17a;
   color: #153772; }
   @media (any-hover: hover) {
-    body.theme2 .btn-primary:hover {
+    .theme2 .btn-primary:hover {
       background-color: #d7bc6e; } }
-  body.theme2 .btn-primary:focus {
+  .theme2 .btn-primary:focus {
     background-color: #d7bc6e; }
 
-body.theme2 .btn-secondary {
+.theme2 .btn-secondary {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 8px;
   width: 100%;
   border-radius: 4px;
-  height: 48px;
-  font-size: 16px;
-  font-weight: 700;
   transition: all 0.2s;
   background-color: #112c5b;
   color: #fff; }
   @media (any-hover: hover) {
-    body.theme2 .btn-secondary:hover {
+    .theme2 .btn-secondary:hover {
       background-color: #0d2144; } }
-  body.theme2 .btn-secondary:focus {
+  .theme2 .btn-secondary:focus {
     background-color: #0d2144; }
 
 .form-wrap {
@@ -236,18 +247,18 @@ input[type="number"],
   .form-input:focus {
     outline: none; }
 
-body.theme1 input[type="text"]:focus,
-body.theme1 input[type="email"]:focus,
-body.theme1 input[type="password"]:focus,
-body.theme1 input[type="number"]:focus,
-body.theme1 .form-input:focus {
+.theme1 input[type="text"]:focus,
+.theme1 input[type="email"]:focus,
+.theme1 input[type="password"]:focus,
+.theme1 input[type="number"]:focus,
+.theme1 .form-input:focus {
   border-color: #974f8c; }
 
-body.theme2 input[type="text"]:focus,
-body.theme2 input[type="email"]:focus,
-body.theme2 input[type="password"]:focus,
-body.theme2 input[type="number"]:focus,
-body.theme2 .form-input:focus {
+.theme2 input[type="text"]:focus,
+.theme2 input[type="email"]:focus,
+.theme2 input[type="password"]:focus,
+.theme2 input[type="number"]:focus,
+.theme2 .form-input:focus {
   border-color: #efd17a; }
 
 .menu-area {
@@ -323,6 +334,97 @@ body.theme2 .form-input:focus {
         height: 32px;
         font-size: 12px; } }
 
+body {
+  min-height: 100vh; }
+
+.theme1 {
+  background-color: #1f2035; }
+
+.theme2 {
+  background-color: #0d2144; }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; }
+  @media (min-width: 768px) {
+    .container {
+      padding-top: 32px; } }
+  .container .content {
+    padding: 48px 0 60px;
+    width: 100%; }
+    @media (min-width: 768px) {
+      .container .content {
+        padding: 48px 16px 60px;
+        max-width: 392px;
+        border-radius: 4px;
+        background-color: rgba(255, 255, 255, 0.1); } }
+
+.page-content {
+  margin-bottom: auto;
+  padding: 0 16px;
+  width: 100%; }
+  @media (min-width: 768px) {
+    .page-content {
+      padding-top: 40px;
+      padding-bottom: 40px; } }
+
+.page-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 32px;
+  height: 48px;
+  font-size: 16px;
+  color: #fff;
+  text-align: center; }
+  @media (min-width: 768px) {
+    .page-header {
+      padding: 0;
+      height: 72px;
+      font-size: 24px; } }
+
+.page-body {
+  margin-top: 12px; }
+  @media (min-width: 768px) {
+    .page-body {
+      margin: 0 auto;
+      max-width: 980px; } }
+
+.ui-tab {
+  display: flex; }
+
+.ui-tab-item {
+  position: relative;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  color: #c7c7c7;
+  cursor: pointer; }
+  @media (min-width: 768px) {
+    .ui-tab-item {
+      flex: none;
+      margin-right: 16px; } }
+  @media (any-hover: hover) {
+    .ui-tab-item:hover {
+      color: #fff; } }
+  .ui-tab-item.is-active {
+    font-weight: 700;
+    color: #fff; }
+    .ui-tab-item.is-active::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: #fff; }
+
 @media (max-width: 767px) {
   .main-page {
     padding-bottom: 60px; } }
@@ -346,45 +448,28 @@ body.theme2 .form-input:focus {
 .main-page .btn-submit {
   margin-top: 24px; }
 
-.font-dosis {
-  font-family: "Dosis", "Noto Sans KR", sans-serif; }
+.my-events-page .event-list {
+  margin: 16px 0; }
 
-body {
-  min-height: 100vh; }
-  body .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; }
-    @media (min-width: 768px) {
-      body .container {
-        padding-top: 32px; } }
-    body .container .content {
-      padding: 60px 0;
-      width: 100%; }
-      @media (min-width: 768px) {
-        body .container .content {
-          padding: 60px 16px;
-          max-width: 392px;
-          border-radius: 4px;
-          background-color: rgba(255, 255, 255, 0.1); } }
-  body .page-content {
-    padding: 0 16px;
-    width: 100%;
-    min-height: 100vh; }
-  body .page-title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 32px;
-    height: 48px;
-    font-size: 16px;
-    color: #fff;
-    text-align: center; }
-
-body.theme1 {
-  background-color: #1f2035; }
-
-body.theme2 {
-  background-color: #0d2144; }
+.my-events-page .event-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  height: 72px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.9); }
+  .my-events-page .event-item:not(:first-child) {
+    margin-top: 8px;
+    border-top: 1px solid #85869b; }
+  .my-events-page .event-item .event-title {
+    font-weight: 700;
+    color: #153772; }
+  .my-events-page .event-item .event-code {
+    color: #153772; }
+    .my-events-page .event-item .event-code::before {
+      content: '#'; }
+  .my-events-page .event-item .btn-status {
+    display: inline-flex;
+    width: auto;
+    min-width: 80px; }

@@ -1,44 +1,82 @@
-.font-dosis
-  font-family: $font-dosis
-
 body
   min-height: 100vh
-
-  .container
-    display: flex
-    flex-direction: column
-    justify-content: center
-    align-items: center
-    min-height: 100vh
-    @include pc-style
-      padding-top: $nav-height
-
-    .content
-      padding: 60px 0
-      width: 100%
-      @include pc-style
-        padding: 60px 16px
-        max-width: 360px + 32px
-        border-radius: 4px
-        background-color: rgba(#fff, 0.1)
-
-  .page-content
-    padding: 0 16px
-    width: 100%
-    min-height: 100vh
-    
-  .page-title
-    display: flex
-    justify-content: center
-    align-items: center
-    padding: 0 32px
-    height: 48px
-    font-size: 16px
-    color: #fff
-    text-align: center
-
-body.theme1
+.theme1
   background-color: $navy900
-
-body.theme2
+.theme2
   background-color: $deepblue900
+
+.container
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  min-height: 100vh
+  @include pc-style
+    padding-top: $nav-height
+
+  .content
+    padding: 48px 0 60px
+    width: 100%
+    @include pc-style
+      padding: 48px 16px 60px
+      max-width: 360px + 32px
+      border-radius: 4px
+      background-color: rgba(#fff, 0.1)
+
+.page-content
+  margin-bottom: auto
+  padding: 0 16px
+  width: 100%
+  @include pc-style
+    padding-top: 40px
+    padding-bottom: 40px
+
+.page-header
+  display: flex
+  justify-content: center
+  align-items: center
+  padding: 0 32px
+  height: 48px
+  font-size: 16px
+  color: #fff
+  text-align: center
+  @include pc-style
+    padding: 0
+    height: 72px
+    font-size: 24px
+    
+.page-body
+  margin-top: 12px
+  @include pc-style
+    margin: 0 auto
+    max-width: 980px
+
+.ui-tab
+  display: flex
+
+.ui-tab-item
+  position: relative
+  display: flex
+  flex: 1
+  justify-content: center
+  align-items: center
+  height: 48px
+  color: #c7c7c7
+  cursor: pointer
+  @include pc-style
+    flex: none
+    margin-right: 16px
+  @include hover
+    color: #fff
+  &.is-active
+    font-weight: 700
+    color: #fff
+    &::after
+      content: ''
+      display: block
+      position: absolute
+      bottom: 0
+      left: 0
+      right: 0
+      height: 2px
+      background-color: #fff

@@ -3,26 +3,29 @@
 
 {% block content %}
   <div class="container">
-    <div>
-      <div>Active</div>
-      <div>Past</div>
-    </div>
+    <div class="page-content">
+      <h1 class="page-title">My Events List</h1>
 
-    <h1>My Events List</h1>
-    {% if my_events_list%}
-      <ul>
-        {% for event in my_events_list %}
-          <li>
-            <a href="{{ event.get_absolute_url }}"><strong>{{ event.title }}</strong></a> ({{event.code}}),
-            <a href="/events/{{ event.id }}/activate/"><button>{% if event.is_active %} Deactivate {% else %} Activate {% endif %}</button></a>
-          </li>
-        {% endfor %}
-      </ul>
-    {% else %}
-      <p>There are no Events.</p>
-    {% endif %}
-  
-    <button type="button" id="room-name-submit" class="btn btn-primary">Create Event</button>
+      <div class="tab-menu">
+        <div class="tab-item">Active</div>
+        <div class="tab-item">Past</div>
+      </div>
+
+      {% if my_events_list%}
+        <ul>
+          {% for event in my_events_list %}
+            <li>
+              <a href="{{ event.get_absolute_url }}"><strong>{{ event.title }}</strong></a> ({{event.code}}),
+              <a href="/events/{{ event.id }}/activate/"><button>{% if event.is_active %} Deactivate {% else %} Activate {% endif %}</button></a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>There are no Events.</p>
+      {% endif %}
+
+      <button type="button" id="room-name-submit" class="btn btn-primary">Create Event</button>
+    </div>
   </div>
 
   <script>

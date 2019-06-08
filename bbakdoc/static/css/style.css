@@ -366,8 +366,22 @@ body {
       @media (min-width: 768px) {
         body .container .content {
           padding: 60px 16px;
+          max-width: 392px;
           border-radius: 4px;
           background-color: rgba(255, 255, 255, 0.1); } }
+  body .page-content {
+    padding: 0 16px;
+    width: 100%;
+    min-height: 100vh; }
+  body .page-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 32px;
+    height: 48px;
+    font-size: 16px;
+    color: #fff;
+    text-align: center; }
 
 body.theme1 {
   background-color: #1f2035; }

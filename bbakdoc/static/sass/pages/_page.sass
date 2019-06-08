@@ -1,2 +1,28 @@
-.container
-  padding: $nav-height 16px 60px
+.font-dosis
+  font-family: $font-dosis
+
+body
+  min-height: 100vh
+
+  .container
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    min-height: 100vh
+    @include pc-style
+      padding-top: $nav-height
+
+    .content
+      padding: 60px 0
+      width: 100%
+      @include pc-style
+        padding: 60px 16px
+        border-radius: 4px
+        background-color: rgba(#fff, 0.1)
+
+body.theme1
+  background-color: $navy900
+
+body.theme2
+  background-color: $deepblue900

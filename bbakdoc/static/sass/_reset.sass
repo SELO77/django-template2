@@ -1,7 +1,12 @@
+#djDebug #djDebugToolbarHandle
+  top: auto !important
+  bottom: 30px
+
 body
   margin: 0
-  background-color: $primary
   font-family: $font-set
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
 
   *
     margin: 0
@@ -25,15 +30,15 @@ fieldset
 legend
   display: none
 
-input,
+input[type="text"],
 button
   font-family: $font-set
   border: 0
   background-color: transparent
   -webkit-appearance: none
 
-input[type="checkbox"]
-  -webkit-appearance: checkbox
+input[type="radio"]
+  margin-right: 3px
 
 button
   cursor: pointer

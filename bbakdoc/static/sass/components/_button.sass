@@ -9,10 +9,47 @@
   font-weight: 700
   transition: all 0.2s
 
-.btn-solid-navy,
-.btn-primary
-  @include btn-default
-  background-color: mix(black, $primary, 50%)
-  color: #fff
-  @include hover
-    background-color: mix(black, $primary, 70%)
+button[class*="btn-"]
+  &:focus
+    outline: none
+
+body.theme1
+  .btn-primary
+    @include btn-default
+    background-color: $purple
+    color: #fff
+    @include hover
+      background-color: $purple600
+    &:focus
+      background-color: $purple600
+
+  .btn-secondary
+    @include btn-default
+    background-color: $navy700
+    color: #fff
+    @include hover
+      background-color: $navy900
+    &:focus
+      background-color: $navy900
+
+
+body.theme2
+  .btn-primary
+    @include btn-default
+    background-color: $mustard
+    color: $deepblue
+    @include hover
+      background-color: $mustard600
+    &:focus
+      background-color: $mustard600
+
+
+  .btn-secondary
+    @include btn-default
+    background-color: $deepblue700
+    color: #fff
+    @include hover
+      background-color: $deepblue900
+    &:focus
+      background-color: $deepblue900
+

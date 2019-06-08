@@ -2,3 +2,13 @@
   @media (any-hover: hover)
     &:hover
       @content
+
+$breakpoint: 768px
+
+@mixin pc-style
+  @media (min-width: $breakpoint)
+    @content
+
+@mixin mobile-style
+  @media (max-width: $breakpoint - 1px)
+    @content

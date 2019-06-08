@@ -28,15 +28,22 @@
 
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
   {% endblock %}
-</head>
+  </head>
 
-  <body>
+  <body class="theme1 theme2">
     <!-- nav -->
-    <nav class="navbar">
-      <a class="nav-home" href="{% url 'home' %}">bbakdoc</a>
-
+    <nav class="navbar" id="navbar">
       <div class="navbar-area">
+        <span class="menu-area" id="menu-area">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </span>
+
         <ul class="nav-list">
+          <li class="nav-item">
+            <a href="{% url 'home' %}" class="nav-link">Home</a>
+          </li>
           <li class="nav-item">
 {#              <a class="nav-link" href="{% url 'events:main' %}">Event</a>#}
             <a class="nav-link" href="/events">Event</a>
@@ -73,14 +80,18 @@
     {% endif %}
 
     {% block content %}
-      <div class="main-page form-wrap">
-        <h1>
-          <img src="/static/images/img_logo_symbol.png" alt="" class="logo">
-          <span>BBACDOC</span>
-        </h1>
-        <input id="event_code-input" type="text" size="100" placeholder="코드를 입력하세요" class="form-input">
-        <input id="event_username-input" type="text" size="100" placeholder="닉네임을 입력하세요" class="form-input">
-        <button id="event_code-submit" type="button" class="btn-submit btn-solid-navy">Send</button>
+      <div class="container">
+        <div class="content">
+          <div class="form-wrap main-page">
+            <h1>
+              <img src="/static/images/img_logo_symbol.png" alt="" class="logo">
+              <span class="font-dosis">BBACDOC</span>
+            </h1>
+            <input id="event_code-input" type="text" size="100" placeholder="코드를 입력하세요" class="form-input">
+            <input id="event_username-input" type="text" size="100" placeholder="닉네임을 입력하세요" class="form-input">
+            <button id="event_code-submit" type="button" class="btn-submit btn-primary">Send</button>
+          </div>
+        </div>
       </div>
 
       <script type="text/javascript">
@@ -118,6 +129,12 @@
   <!-- place project specific Javascript in this file -->
 
   <script src="{% static 'js/project.js' %}"></script>
+
+  <script>
+    $('#menu-area').click(function(){
+      $('#navbar').toggleClass('is-active');
+    });
+  </script>
 {% endblock javascript %}
 </body>
 </html>

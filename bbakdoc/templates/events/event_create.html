@@ -5,7 +5,7 @@
   <div class="container event-create-page">
     <form method="post">{% csrf_token %}
       {{ form.as_p }}
-      <button type="submit" class="btn btn-primary">이벤트 생성하기</button>
+      <button class="btn btn-primary" type="submit">이벤트 생성하기</button>
     </form>
   </div>
 {% endblock %}

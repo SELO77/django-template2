@@ -14,6 +14,7 @@
 
       {% if object == request.user %}
       <!-- Action buttons -->
+        <a href="#" class="btn btn-primary">Upgrade Membership</a>
         <a class="btn btn-primary" href="{% url 'users:update' %}" role="button">Change Username</a>
         <a class="btn btn-primary" href="{% url 'account_email' %}" role="button">Email Management</a>
         <!-- Your Stuff: Custom user template urls -->

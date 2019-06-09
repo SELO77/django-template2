@@ -549,6 +549,7 @@ body {
     font-weight: 700;
     color: #153772; }
   .events-page .event-item .event-code {
+    margin-left: 0.3em;
     color: #153772; }
     .events-page .event-item .event-code::before {
       content: '#'; }
@@ -645,6 +646,12 @@ body {
 .tab-con-poll .row {
   background-color: #fff; }
 
+@media (max-width: 639px) {
+  .tab-con-poll .col.result {
+    display: none; }
+    .tab-con-poll .col.result.is-open {
+      display: block; } }
+
 .tab-con-poll .col,
 .tab-con-poll .h2-area {
   position: relative; }
@@ -657,11 +664,15 @@ body {
 
 .tab-con-poll .create-edit-area {
   position: absolute;
-  top: 16px;
-  left: 16px;
+  top: 0;
+  left: 0;
   display: none;
-  padding-right: 16px;
   background-color: #fff; }
+  @media (min-width: 640px) {
+    .tab-con-poll .create-edit-area {
+      top: 16px;
+      left: 16px;
+      padding-right: 16px; } }
   .tab-con-poll .create-edit-area.is-open {
     display: block;
     z-index: 1; }

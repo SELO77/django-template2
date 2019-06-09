@@ -103,11 +103,11 @@
                   <label for="check5">매우 좋다</label>
                 </div>
                 <div class="btn-in-row">
-                  <button class="btn btn-line-navy">결과 보기</button>
+                  <button class="btn btn-line-navy" id="btn-open-result">결과보기</button>
                   <button class="btn btn-primary">제출</button>
                 </div>
               </div>
-              <div class="col">
+              <div class="col result">
                 <h2>Poll Result</h2>
                 <p class="poll-title">영어를 좋아합니까?</p>
                 <div class="poll-result-area">
@@ -207,7 +207,7 @@
                 </div>
               </div>
 
-              <div class="col">
+              <div class="col result">
                 <div class="h2-area">
                   <h2>Poll Result</h2>
                   <button class="btn-small btn-primary btn-beside-h2">전체 결과보기</button>
@@ -273,7 +273,7 @@
           </div>
 
           <div class="tab-con-slide">
-{#            <iframe src="//www.slideshare.net/slideshow/embed_code/key/wZudqqTdctjWXA" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen></iframe>#}
+            <iframe src="//www.slideshare.net/slideshow/embed_code/key/wZudqqTdctjWXA" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen></iframe>
             <div class="slide-caption"> <strong> <a href="//www.slideshare.net/carologic/ai-and-machine-learning-demystified-by-carol-smith-at-midwest-ux-2017" title="AI and Machine Learning Demystified by Carol Smith at Midwest UX 2017" target="_blank">AI and Machine Learning Demystified by Carol Smith at Midwest UX 2017</a> </strong> from <strong><a href="https://www.slideshare.net/carologic" target="_blank">Carol Smith</a></strong> </div>
           </div>
         </div>
@@ -324,6 +324,10 @@
 
     document.querySelector('#btn-submit, #btn-cancel').onclick = function (e){
       document.querySelector('#create-edit-area').classList.remove('is-open');
+    };
+
+    document.querySelector('#btn-open-result').onclick = function (e){
+      document.querySelector('.col.result').classList.add('is-open');
     };
   </script>
 {% endblock %}

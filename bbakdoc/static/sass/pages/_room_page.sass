@@ -61,6 +61,12 @@
 .tab-con-poll
   .row
     background-color: #fff
+    
+  .col.result
+    @include mobile-style
+      display: none
+      &.is-open
+        display: block
 
   .col,
   .h2-area
@@ -74,11 +80,14 @@
 
   .create-edit-area
     position: absolute
-    top: 16px
-    left: 16px
+    top: 0
+    left: 0
     display: none
-    padding-right: 16px
     background-color: #fff
+    @include pc-style
+      top: 16px
+      left: 16px
+      padding-right: 16px
     &.is-open
       display: block
       z-index: 1

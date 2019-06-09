@@ -6,13 +6,13 @@
 {% block content %}
   <div class="container">
     <div class="page-content team-page">
-      <h1 class="page-header">Team</h1>
+      <h1 class="page-header">Email Management</h1>
 
       <div class="page-body">
         <div class="row">
           {% if user.emailaddress_set.all %}
           <div class="col">
-            <h2>Staff Email List</h2>
+            <h2>Email List</h2>
             <p>{% trans 'The following e-mail addresses are associated with your account:' %}</p>
 
             <form action="{% url 'account_email' %}" class="email_list" method="post">
@@ -66,7 +66,7 @@
     </div>
   </div>
 
-  {% block javascript %}
+{% block javascript %}
   {{ block.super }}
   <script type="text/javascript">
   (function() {

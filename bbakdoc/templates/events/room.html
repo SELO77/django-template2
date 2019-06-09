@@ -1,5 +1,7 @@
 {% extends "base.html" %}
+{% load static %}
 {% load crispy_forms_tags %}
+{% block title %}Event{% endblock %}
 
 {% block content %}
   <div class="container">
@@ -13,17 +15,26 @@
         </ul>
 
         <div class="tab-con" id="tab-con">
-          <div>
-            <div class="question-area">
+          <div class="tab-con-question">
+            <div class="question-create-area">
               <textarea id="question-input" class="form-textarea" placeholder="질문을 입력하세요"></textarea>
               <button id="question-submit" type="button" class="btn btn-primary btn-send">Send</button>
             </div>
-            <div id="question-container">
-              {% if event_questions_list %}
-                {% for event_question in event_questions_list %}
-                  <div>{{ event_question.questioner }} |  {{ event_question.content }} : {{ event_question.likes }}</div>
-                {% endfor %}
-              {% endif %}
+            <div class="question-list-area" id="question-container">
+{#              {% if event_questions_list %}#}
+{#                {% for event_question in event_questions_list %}#}
+{#                  <div>{{ event_question.questioner }} |  {{ event_question.content }} : {{ event_question.likes }}</div>#}
+{#                {% endfor %}#}
+{#              {% endif %}#}
+
+              <div class="dropdown">
+                <select>
+                  <option value="">추천순</option>
+                  <option value="">최신순</option>
+                  <option value="">랜덤순</option>
+                </select>
+              </div>
+
               <ul class="question-list">
                 <li class="question-item">
                   <p>
@@ -33,7 +44,7 @@
                   <p class="q-content">질문이 있습니다! 질문이 있습니다! 질문이 있습니다! 질문이 있습니다! 질문이 있습니다! 질문이 있습니다! 질문이 있습니다!</p>
                   <div class="btn-area">
                     <button class="btn-mini btn-primary">고정</button>
-                    <button class="btn-mini btn-primary">공감</button>
+                    <button class="btn-mini btn-primary"><span>공감</span><span class="count">0</span></button>
                     <button class="btn-mini btn-primary">삭제</button>
                   </div>
                 </li>
@@ -45,7 +56,7 @@
                   <p class="q-content">질문이 있습니다! 질문이 있습니다! 질문이 있습니다! 질문이 있습니다! 질문이 있습니다! 질문이 있습니다! 질문이 있습니다!</p>
                   <div class="btn-area">
                     <button class="btn-mini btn-primary">고정</button>
-                    <button class="btn-mini btn-primary">공감</button>
+                    <button class="btn-mini btn-primary"><span>공감</span><span class="count">0</span></button>
                     <button class="btn-mini btn-primary">삭제</button>
                   </div>
                 </li>
@@ -57,7 +68,7 @@
                   <p class="q-content">질문이 있습니다! 질문이 있습니다! 질문이 있습니다! 질문이 있습니다! 질문이 있습니다! 질문이 있습니다! 질문이 있습니다!</p>
                   <div class="btn-area">
                     <button class="btn-mini btn-primary">고정</button>
-                    <button class="btn-mini btn-primary">공감</button>
+                    <button class="btn-mini btn-primary"><span>공감</span><span class="count">0</span></button>
                     <button class="btn-mini btn-primary">삭제</button>
                   </div>
                 </li>
@@ -65,12 +76,205 @@
             </div>
           </div>
 
-          <div>
-            poll
+          <div class="tab-con-poll">
+{#            참석자 #}
+            <div class="attendee row">
+              <div class="col">
+                <h2>Live Poll</h2>
+                <p class="poll-title">영어를 좋아합니까?</p>
+                <div class="form-group form-check-group">
+                  <input type="checkbox" id="check1" class="form-check">
+                  <label for="check1">매우 싫다</label>
+                </div>
+                <div class="form-group form-check-group">
+                  <input type="checkbox" id="check2" class="form-check">
+                  <label for="check2">싫다</label>
+                </div>
+                <div class="form-group form-check-group">
+                  <input type="checkbox" id="check3" class="form-check">
+                  <label for="check3">그럭저럭이다</label>
+                </div>
+                <div class="form-group form-check-group">
+                  <input type="checkbox" id="check4" class="form-check">
+                  <label for="check4">좋다</label>
+                </div>
+                <div class="form-group form-check-group">
+                  <input type="checkbox" id="check5" class="form-check">
+                  <label for="check5">매우 좋다</label>
+                </div>
+                <div class="btn-in-row">
+                  <button class="btn btn-line-navy">결과 보기</button>
+                  <button class="btn btn-primary">제출</button>
+                </div>
+              </div>
+              <div class="col">
+                <h2>Poll Result</h2>
+                <p class="poll-title">영어를 좋아합니까?</p>
+                <div class="poll-result-area">
+                  <ul class="graph-list">
+                    <li class="graph-item">
+                      <span class="caption">매우 싫다</span>
+                      <span class="graph" data-result="3%" style="width: 3%"></span>
+                    </li>
+                    <li class="graph-item">
+                      <span class="caption">싫다</span>
+                      <span class="graph" data-result="7%" style="width: 7%"></span>
+                    </li>
+                    <li class="graph-item">
+                      <span class="caption">그럭저럭이다</span>
+                      <span class="graph" data-result="0%" style="width: 0%"></span>
+                    </li>
+                    <li class="graph-item">
+                      <span class="caption">좋다</span>
+                      <span class="graph" data-result="10%" style="width: 10%"></span>
+                    </li>
+                    <li class="graph-item highlight">
+                      <span class="caption">매우 좋다</span>
+                      <span class="graph" data-result="80%" style="width: 80%"></span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+{#            주최자 #}
+            <div class="organizer row">
+              <div class="col">
+                <div class="create-edit-area" id="create-edit-area">
+                  <h2>Create(Edit) Poll</h2>
+                  <div class="create-poll-area">
+                    <div class="form-group">
+                      <label for="poll-title" class="form-label">투표 제목<span class="asteriskField">*</span></label>
+                      <input type="text" placeholder="투표 제목을 입력하세요" class="form-input" id="poll-title">
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">투표 옵션<span class="asteriskField">*</span></label>
+                      <input type="text" placeholder="옵션 추가" class="form-input" id="poll-title">
+                      <input type="text" placeholder="옵션 추가" class="form-input" id="poll-title">
+                      <input type="text" placeholder="옵션 추가" class="form-input" id="poll-title">
+                      <input type="text" placeholder="옵션 추가" class="form-input" id="poll-title">
+                      <input type="text" placeholder="옵션 추가" class="form-input" id="poll-title">
+                    </div>
+                    <div class="form-group form-check-group">
+                      <input type="checkbox" id="option1" class="form-check">
+                      <label for="option1">중복선택 허용</label>
+                    </div>
+                    <div class="form-group form-check-group">
+                      <input type="checkbox" id="option2" class="form-check">
+                      <label for="option2">결과에 정답 표시하기</label>
+                    </div>
+                    <div class="btn-in-row">
+                      <button class="btn btn-line-navy" id="btn-cancel">취소</button>
+                      <button class="btn btn-primary" id="btn-submit">생성</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="list-area">
+                  <div class="h2-area">
+                    <h2>Poll List</h2>
+                    <button class="btn-small btn-primary btn-beside-h2" id="btn-create-poll">생성</button>
+                  </div>
+                  <ul class="poll-list">
+                    <li class="poll-item">
+                      <p class="poll-item-title">영어를 좋아합니까?</p>
+                      <div class="btn-area">
+                        <button class="btn-mini btn-line-mustard">수정</button>
+                        <button class="btn-mini btn-primary">시작</button>
+                        <button class="btn-mini btn-line-navy">종료</button>
+                        <button class="btn-mini btn-secondary">결과</button>
+                      </div>
+                    </li>
+                    <li class="poll-item">
+                      <p class="poll-item-title">수학를 좋아합니까?</p>
+                      <div class="btn-area">
+                        <button class="btn-mini btn-line-mustard">수정</button>
+                        <button class="btn-mini btn-primary">시작</button>
+                        <button class="btn-mini btn-line-navy">종료</button>
+                        <button class="btn-mini btn-secondary">결과</button>
+                      </div>
+                    </li>
+                    <li class="poll-item">
+                      <p class="poll-item-title">과학를 좋아합니까?</p>
+                      <div class="btn-area">
+                        <button class="btn-mini btn-line-mustard">수정</button>
+                        <button class="btn-mini btn-primary">시작</button>
+                        <button class="btn-mini btn-line-navy">종료</button>
+                        <button class="btn-mini btn-secondary">결과</button>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="h2-area">
+                  <h2>Poll Result</h2>
+                  <button class="btn-small btn-primary btn-beside-h2">전체 결과보기</button>
+                </div>
+
+                <div class="poll-item-result">
+                  <p class="poll-title">영어를 좋아합니까?</p>
+                  <div class="poll-result-area">
+                    <ul class="graph-list">
+                      <li class="graph-item">
+                        <span class="caption">매우 싫다</span>
+                        <span class="graph" data-result="3%" style="width: 3%"></span>
+                      </li>
+                      <li class="graph-item">
+                        <span class="caption">싫다</span>
+                        <span class="graph" data-result="7%" style="width: 7%"></span>
+                      </li>
+                      <li class="graph-item">
+                        <span class="caption">그럭저럭이다</span>
+                        <span class="graph" data-result="0%" style="width: 0%"></span>
+                      </li>
+                      <li class="graph-item">
+                        <span class="caption">좋다</span>
+                        <span class="graph" data-result="10%" style="width: 10%"></span>
+                      </li>
+                      <li class="graph-item highlight">
+                        <span class="caption">매우 좋다</span>
+                        <span class="graph" data-result="80%" style="width: 80%"></span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="poll-item-result">
+                  <p class="poll-title">수학를 좋아합니까?</p>
+                  <div class="poll-result-area">
+                    <ul class="graph-list">
+                      <li class="graph-item">
+                        <span class="caption">매우 싫다</span>
+                        <span class="graph" data-result="3%" style="width: 3%"></span>
+                      </li>
+                      <li class="graph-item">
+                        <span class="caption">싫다</span>
+                        <span class="graph" data-result="7%" style="width: 7%"></span>
+                      </li>
+                      <li class="graph-item">
+                        <span class="caption">그럭저럭이다</span>
+                        <span class="graph" data-result="0%" style="width: 0%"></span>
+                      </li>
+                      <li class="graph-item">
+                        <span class="caption">좋다</span>
+                        <span class="graph" data-result="10%" style="width: 10%"></span>
+                      </li>
+                      <li class="graph-item highlight">
+                        <span class="caption">매우 좋다</span>
+                        <span class="graph" data-result="80%" style="width: 80%"></span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div>
-            slide
+          <div class="tab-con-slide">
+{#            <iframe src="//www.slideshare.net/slideshow/embed_code/key/wZudqqTdctjWXA" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen></iframe>#}
+            <div class="slide-caption"> <strong> <a href="//www.slideshare.net/carologic/ai-and-machine-learning-demystified-by-carol-smith-at-midwest-ux-2017" title="AI and Machine Learning Demystified by Carol Smith at Midwest UX 2017" target="_blank">AI and Machine Learning Demystified by Carol Smith at Midwest UX 2017</a> </strong> from <strong><a href="https://www.slideshare.net/carologic" target="_blank">Carol Smith</a></strong> </div>
           </div>
         </div>
       </div>
@@ -112,6 +316,14 @@
       }));
 
       questionInputDom.value = '';
+    };
+
+    document.querySelector('#btn-create-poll').onclick = function (e){
+      document.querySelector('#create-edit-area').classList.add('is-open');
+    };
+
+    document.querySelector('#btn-submit, #btn-cancel').onclick = function (e){
+      document.querySelector('#create-edit-area').classList.remove('is-open');
     };
   </script>
 {% endblock %}

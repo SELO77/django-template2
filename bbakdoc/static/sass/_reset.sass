@@ -2,6 +2,9 @@
   top: auto !important
   bottom: 30px
 
+[hidden], .hidden
+  display: none !important
+
 body
   margin: 0
   font-family: $font-set
@@ -21,8 +24,14 @@ body
 
 h1
   font-size: 1.2em
-h2
+h2,
+.h2-area
+  margin-bottom: 0.3em
   font-size: 1.1em
+h2 + p,
+.h2-area + p
+  margin-bottom: 8px
+  font-size: 14px
 h3
   font-size: 1.05em
 p

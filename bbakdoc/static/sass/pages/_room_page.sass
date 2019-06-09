@@ -3,19 +3,42 @@
     padding: 0
     background-color: transparent
 
-  .question-area
-    margin: 16px 0
+  .tab-con
+    padding-top: 16px
+
+  .btn-area
+    display: flex
+    align-items: flex-end
+    button + button
+      margin-left: 2px
+
+.tab-con-question
+  .question-create-area
+    margin-bottom: 16px
     padding: 16px
     border-radius: 4px
     background-color: #fff
 
-  .question-list
+  .question-list-area
+    padding: 16px
+    border-radius: 4px
+    background-color: #ddd
+
+  .dropdown
+    display: flex
+    justify-content: flex-end
+    select
+      min-width: 100px
+      font-size: 14px
+      @include pc-style
+        height: 32px
 
   .question-item
     position: relative
     margin-top: 8px
     padding: 16px
     border-radius: 4px
+    border: 1px solid #ccc
     background-color: #fff
 
   .q-questioner
@@ -30,3 +53,127 @@
     position: absolute
     top: 16px
     right: 16px
+
+    .count
+      margin-left: 3px
+      padding-top: 1px
+
+.tab-con-poll
+  .row
+    background-color: #fff
+
+  .col,
+  .h2-area
+    position: relative
+
+  .btn-beside-h2
+    position: absolute
+    top: 0
+    right: 0
+    width: auto
+
+  .create-edit-area
+    position: absolute
+    top: 16px
+    left: 16px
+    display: none
+    padding-right: 16px
+    background-color: #fff
+    &.is-open
+      display: block
+      z-index: 1
+
+  .list-area
+    min-height: 542px
+
+  .poll-title
+    padding: 0.5em 0
+    font-size: 16px
+    font-weight: 500
+    border-bottom: 1px solid $navy100
+
+  .poll-list
+    margin-top: 8px
+    border-top: 1px solid $navy100
+
+  .poll-item
+    position: relative
+    display: flex
+    flex-direction: column
+    justify-content: center
+    padding: 0 8px
+    height: 60px
+    border-bottom: 1px solid $navy100
+    label
+      display: flex
+      flex: 1
+      align-items: center
+      margin: 0
+      padding-right: 50px
+      height: 100%
+      font-size: 14px
+      cursor: pointer
+    .btn-area
+      justify-content: flex-end
+
+  .poll-item-title
+    font-size: 14px
+    font-weight: 500
+
+  .form-check-group
+    display: flex
+    align-items: center
+
+    label
+      margin-left: 4px
+      margin-bottom: 0
+      font-size: 14px
+
+  .poll-item-result
+    margin-bottom: 24px
+
+  .poll-result-area
+    margin-top: 8px
+
+  .graph-list
+    display: flex
+    flex-direction: column
+    justify-content: center
+
+  .graph-item
+    font-size: 14px
+    & + .graph-item
+      margin-top: 8px
+    &.highlight
+      font-weight: 700
+      .graph
+        background-image: linear-gradient(to right, $mustard100, $mustard)
+
+  .graph
+    position: relative
+    display: block
+    height: 15px
+    border-radius: 0 4px 4px 0
+    border-left: 1px solid #ddd
+    background-image: linear-gradient(to right, $navy100, $navy)
+    &::after
+      content: attr(data-result)
+      position: absolute
+      top: 0
+      right: -30px
+      font-size: 12px
+
+.tab-con-slide
+  iframe
+    display: block
+    width: 100%
+    height: 300px
+    @include pc-style
+      height: 600px
+      border: 0
+
+  .slide-caption
+    margin-top: 8px
+    color: #fff
+    a
+      color: inherit

@@ -16,11 +16,13 @@
 
 @mixin btn-small
   height: 24px
-  font-size: 14px
+  font-size: 12px
+  font-weight: 500
 
 @mixin btn-normal
   height: 32px
-  font-size: 12px
+  font-size: 14px
+  font-weight: 500
 
 @mixin btn-large
   height: 48px
@@ -51,9 +53,17 @@ button[class*="btn-"]
 
 .btn-line-navy
   @include btn-default
-  //border: 1px solid $navy
+  border: 1px solid $navy
   font-weight: 500
-  background-color: rgba($navy, 0.2)
+  @include hover
+    background-color: rgba($navy, 0.1)
+
+.btn-line-mustard
+  @include btn-default
+  border: 1px solid $mustard
+  font-weight: 500
+  @include hover
+    background-color: rgba($mustard, 0.1)
 
 .btn
   margin-top: 8px
@@ -74,3 +84,12 @@ button[class*="btn-"]
 .btn-mini-round
   @include btn-mini
   border-radius: 10px
+
+.btn-in-row
+  display: flex
+  margin-top: 16px
+  button
+    margin-top: 0
+    flex: 1
+    & + button
+      margin-left: 8px

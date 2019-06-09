@@ -2,6 +2,23 @@ body
   min-height: 100vh
   background-color: $deepblue900
 
+.row
+  border-radius: 4px
+.row + .row
+  margin-top: 16px
+
+@include mobile-style
+  .row
+    padding: 16px
+  .col + .col
+      margin-top: 24px
+@include pc-style
+  .row
+    display: flex
+  .col
+    flex: 1
+    padding: 16px
+
 .container
   display: flex
   flex-direction: column
@@ -81,12 +98,9 @@ body
       background-color: #fff
 
 .team-page
-  h2
-    margin-bottom: 0.3em
-
-  h2 + p
-    margin-bottom: 8px
-    font-size: 14px
+  .page-body
+    padding: 0
+    border-radius: 4px
 
   .email-list
     margin-top: 8px
@@ -125,14 +139,3 @@ body
       margin-top: 4px
     .btn-mini-round.primary
       background-color: rgba($mustard, 0.5)
-
-  @include mobile-style
-    .col + .col
-      margin-top: 24px
-  @include pc-style
-    .row
-      display: flex
-      padding: 0
-    .col
-      flex: 1
-      padding: 16px

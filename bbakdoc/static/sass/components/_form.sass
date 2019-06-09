@@ -47,9 +47,6 @@
       bottom: 0
       font-size: 12px
 
-  .btn
-    margin-top: 24px
-
 label,
 .form-label
   display: block
@@ -59,13 +56,14 @@ label,
 
   .asteriskField
     margin-left: 1px
-    color: yellow
+    color: $mustard
 
 input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="number"],
-.form-input
+.form-input,
+.form-textarea
   margin-top: 8px
   padding: 0 16px
   width: 100%
@@ -78,21 +76,8 @@ input[type="number"],
     margin-top: 0
   &:focus
     outline: none
+    border-color: $mustard
 
-.theme1
-  input[type="text"],
-  input[type="email"],
-  input[type="password"],
-  input[type="number"],
-  .form-input
-    &:focus
-      border-color: $purple
-
-.theme2
-  input[type="text"],
-  input[type="email"],
-  input[type="password"],
-  input[type="number"],
-  .form-input
-    &:focus
-      border-color: $mustard
+.form-textarea
+  padding: 16px
+  height: auto

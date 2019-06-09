@@ -1,22 +1,21 @@
 {% extends "base.html" %}
 {% load static %}
-
-{% block title %}User: {{ object.email }}{% endblock %}
+{% block title %}Team{% endblock %}
 
 {% block content %}
   <div class="container">
     <div class="content">
       <div class="form-wrap">
-        <h1>My Profile</h1>
+        <h1>Team</h1>
         <p>{{ object.email }}</p>
-      {#      {% if object.name %}#}
-      {#        <p>{{ object.name }}</p>#}
-      {#      {% endif %}#}
+        {% if object.name %}
+          <p>{{ object.name }}</p>
+        {% endif %}
 
       {% if object == request.user %}
       <!-- Action buttons -->
         <a class="btn btn-primary" href="{% url 'users:update' %}" role="button">Change Username</a>
-        <a class="btn btn-primary" href="{% url 'account_email' %}" role="button">Email Management</a>
+        <a class="btn btn-primary" href="{% url 'account_email' %}" role="button">Team Management</a>
         <!-- Your Stuff: Custom user template urls -->
       <!-- End Action buttons -->
       {% endif %}

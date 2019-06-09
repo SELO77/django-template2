@@ -3,21 +3,30 @@
 
 {% block content %}
   <div class="container">
-    <h1>{{ event.title }} ({{ event.code }})</h1>
-    <hr>
-    <p>Your name is <strong>{{ request.session.nickname }}</strong></p>
-    <hr>
-    <div id="question-container">
-      {% if event_questions_list %}
-        {% for event_question in event_questions_list %}
-          <div>{{ event_question.questioner }} |  {{ event_question.content }} : {{ event_question.likes }}</div>
-        {% endfor %}
-      {% endif %}
+    <div class="page-content question-page">
+      <h1 class="page-header">{{ event.title }} ({{ event.code }})</h1>
+      <div class="page-body">
+{#        <p>Your name is <strong>{{ request.session.nickname }}</strong></p>#}
+        <textarea id="question-input" class="form-textarea" placeholder="질문을 입력하세요"></textarea>
+        <button id="question-submit" type="button" class="btn btn-primary btn-send">Send</button>
+
+        <div id="question-container">
+          {% if event_questions_list %}
+            {% for event_question in event_questions_list %}
+              <div>{{ event_question.questioner }} |  {{ event_question.content }} : {{ event_question.likes }}</div>
+            {% endfor %}
+          {% endif %}
+          <ul class="question-list">
+            <li class="question-item">
+              <span class="q-questioner"></span>
+              <span class="q-tiem"></span>
+              <span class="q-content"></span>
+              <button>like</button>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <br/>
-    <label for="question-input">Question -> </label>
-    <input id="question-input" type="text" size="100"/><br/>
-    <input id="question-submit" type="button" value="Send"/>
   </div>
   <script>
     var eventCode = {{ event.code }};
@@ -57,9 +66,3 @@
     };
   </script>
 {% endblock %}
-
-{#{% block javascript %}#}
-{#  <script type="text/javascript">#}
-{#  #}
-{#  </script>#}
-{#{% endblock %}#}

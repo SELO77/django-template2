@@ -30,7 +30,7 @@
   {% endblock %}
   </head>
 
-  <body class="theme1 theme2">
+  <body>
     <!-- nav -->
     <nav class="navbar" id="navbar">
       <div class="navbar-area">
@@ -46,12 +46,12 @@
           </li>
           <li class="nav-item">
 {#              <a class="nav-link" href="{% url 'events:main' %}">Event</a>#}
-            <a class="nav-link" href="/events">My Events</a>
+            <a class="nav-link" href="/events">Events</a>
           </li>
           {% if request.user.is_authenticated %}
             <li class="nav-item">
               {# URL provided by django-allauth/account/urls.py #}
-              <a class="nav-link" href="{% url 'users:detail' request.user.id %}">My Profile</a>
+              <a class="nav-link" href="{% url 'users:detail' request.user.id %}">Team</a>
             </li>
             <li class="nav-item">
               {# URL provided by django-allauth/account/urls.py #}
@@ -89,7 +89,7 @@
             </h1>
             <input id="event_code-input" type="text" size="100" placeholder="코드를 입력하세요" class="form-input">
             <input id="event_username-input" type="text" size="100" placeholder="닉네임을 입력하세요" class="form-input">
-            <button id="event_code-submit" type="button" class="btn-submit btn-primary">Send</button>
+            <button id="event_code-submit" type="button" class="btn btn-primary btn-submit">Send</button>
           </div>
         </div>
       </div>

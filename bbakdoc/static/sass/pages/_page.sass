@@ -1,8 +1,5 @@
 body
   min-height: 100vh
-.theme1
-  background-color: $navy900
-.theme2
   background-color: $deepblue900
 
 .container
@@ -15,10 +12,10 @@ body
     padding-top: $nav-height
 
   .content
-    padding: 48px 0 60px
+    padding: 48px 0
     width: 100%
     @include pc-style
-      padding: 48px 16px 60px
+      padding: 48px 16px
       max-width: 360px + 32px
       border-radius: 4px
       background-color: rgba(#fff, 0.1)
@@ -46,7 +43,8 @@ body
     font-size: 24px
     
 .page-body
-  margin-top: 12px
+  padding: 16px
+  background-color: #fff
   @include pc-style
     margin: 0 auto
     max-width: 980px
@@ -65,7 +63,8 @@ body
   cursor: pointer
   @include pc-style
     flex: none
-    margin-right: 16px
+    margin-right: 24px
+    height: 40px
   @include hover
     color: #fff
   &.is-active
@@ -80,3 +79,64 @@ body
       right: 0
       height: 2px
       background-color: #fff
+
+.question-page
+  .btn-send
+    margin-top: 8px
+
+.team-page
+  h2
+    margin-bottom: 0.3em
+
+  h2 + p
+    margin-bottom: 8px
+    font-size: 14px
+
+  .email-list
+    margin-top: 8px
+    border-top: 1px solid $navy100
+
+  .email-item
+    position: relative
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding: 0 8px
+    height: 60px
+    border-bottom: 1px solid $navy100
+    @include hover
+      background-color: rgba($navy, 0.1)
+    label
+      display: flex
+      flex: 1
+      align-items: center
+      margin: 0
+      padding-right: 50px
+      height: 100%
+      font-size: 14px
+      cursor: pointer
+    .btn-area
+      position: absolute
+      top: 0
+      right: 8px
+      bottom: 0
+      display: flex
+      flex-direction: column
+      justify-content: center
+      z-index: 1
+      pointer-events: none
+    .btn-mini-round:not(:first-of-type)
+      margin-top: 4px
+    .btn-mini-round.primary
+      background-color: rgba($mustard, 0.5)
+
+  @include mobile-style
+    .col + .col
+      margin-top: 24px
+  @include pc-style
+    .row
+      display: flex
+      padding: 0
+    .col
+      flex: 1
+      padding: 16px

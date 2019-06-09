@@ -7,6 +7,13 @@
   border-radius: 4px
   transition: all 0.2s
 
+@mixin btn-mini
+  display: inline-flex
+  padding: 0 6px
+  width: auto
+  height: 20px
+  font-size: 10px
+
 @mixin btn-small
   height: 24px
   font-size: 14px
@@ -24,6 +31,33 @@ button[class*="btn-"]
   &:focus
     outline: none
 
+.btn-primary
+  @include btn-default
+  background-color: $mustard
+  color: $deepblue
+  @include hover
+    background-color: $mustard600
+  &:focus
+    background-color: $mustard600
+
+.btn-secondary
+  @include btn-default
+  background-color: $deepblue700
+  color: #fff
+  @include hover
+    background-color: $deepblue900
+  &:focus
+    background-color: $deepblue900
+
+.btn-line-navy
+  @include btn-default
+  //border: 1px solid $navy
+  font-weight: 500
+  background-color: rgba($navy, 0.2)
+
+.btn
+  margin-top: 8px
+
 .btn,
 .btn-large
   @include btn-large
@@ -34,40 +68,9 @@ button[class*="btn-"]
 .btn-small
   @include btn-small
 
-.theme1
-  .btn-primary
-    @include btn-default
-    background-color: $purple
-    color: #fff
-    @include hover
-      background-color: $purple600
-    &:focus
-      background-color: $purple600
+.btn-mini
+  @include btn-mini
 
-  .btn-secondary
-    @include btn-default
-    background-color: $navy700
-    color: #fff
-    @include hover
-      background-color: $navy900
-    &:focus
-      background-color: $navy900
-
-.theme2
-  .btn-primary
-    @include btn-default
-    background-color: $mustard
-    color: $deepblue
-    @include hover
-      background-color: $mustard600
-    &:focus
-      background-color: $mustard600
-
-  .btn-secondary
-    @include btn-default
-    background-color: $deepblue700
-    color: #fff
-    @include hover
-      background-color: $deepblue900
-    &:focus
-      background-color: $deepblue900
+.btn-mini-round
+  @include btn-mini
+  border-radius: 10px

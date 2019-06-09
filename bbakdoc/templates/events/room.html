@@ -3,31 +3,80 @@
 
 {% block content %}
   <div class="container">
-    <div class="page-content question-page">
+    <div class="page-content room-page">
       <h1 class="page-header">{{ event.title }} ({{ event.code }})</h1>
       <div class="page-body">
-{#        <p>Your name is <strong>{{ request.session.nickname }}</strong></p>#}
-        <textarea id="question-input" class="form-textarea" placeholder="질문을 입력하세요"></textarea>
-        <button id="question-submit" type="button" class="btn btn-primary btn-send">Send</button>
+        <ul class="ui-tab" id="tab">
+          <li class="ui-tab-item">Question</li>
+          <li class="ui-tab-item">Poll</li>
+          <li class="ui-tab-item">Slide</li>
+        </ul>
 
-        <div id="question-container">
-          {% if event_questions_list %}
-            {% for event_question in event_questions_list %}
-              <div>{{ event_question.questioner }} |  {{ event_question.content }} : {{ event_question.likes }}</div>
-            {% endfor %}
-          {% endif %}
-          <ul class="question-list">
-            <li class="question-item">
-              <span class="q-questioner"></span>
-              <span class="q-tiem"></span>
-              <span class="q-content"></span>
-              <button>like</button>
-            </li>
-          </ul>
+        <div class="tab-con" id="tab-con">
+          <div>
+            <div class="question-area">
+              <textarea id="question-input" class="form-textarea" placeholder="질문을 입력하세요"></textarea>
+              <button id="question-submit" type="button" class="btn btn-primary btn-send">Send</button>
+            </div>
+            <div id="question-container">
+              {% if event_questions_list %}
+                {% for event_question in event_questions_list %}
+                  <div>{{ event_question.questioner }} |  {{ event_question.content }} : {{ event_question.likes }}</div>
+                {% endfor %}
+              {% endif %}
+              <ul class="question-list">
+                <li class="question-item">
+                  <p>
+                    <span class="q-questioner">지니</span>
+                    <span class="q-time">2019-06-09 15:46:30</span>
+                  </p>
+                  <p class="q-content">질문이 있습니다! 질문이 있습니다! 질문이 있습니다! 질문이 있습니다! 질문이 있습니다! 질문이 있습니다! 질문이 있습니다!</p>
+                  <div class="btn-area">
+                    <button class="btn-mini btn-primary">고정</button>
+                    <button class="btn-mini btn-primary">공감</button>
+                    <button class="btn-mini btn-primary">삭제</button>
+                  </div>
+                </li>
+                <li class="question-item">
+                  <p>
+                    <span class="q-questioner">지니</span>
+                    <span class="q-time">2019-06-09 15:46:30</span>
+                  </p>
+                  <p class="q-content">질문이 있습니다! 질문이 있습니다! 질문이 있습니다! 질문이 있습니다! 질문이 있습니다! 질문이 있습니다! 질문이 있습니다!</p>
+                  <div class="btn-area">
+                    <button class="btn-mini btn-primary">고정</button>
+                    <button class="btn-mini btn-primary">공감</button>
+                    <button class="btn-mini btn-primary">삭제</button>
+                  </div>
+                </li>
+                <li class="question-item">
+                  <p>
+                    <span class="q-questioner">지니</span>
+                    <span class="q-time">2019-06-09 15:46:30</span>
+                  </p>
+                  <p class="q-content">질문이 있습니다! 질문이 있습니다! 질문이 있습니다! 질문이 있습니다! 질문이 있습니다! 질문이 있습니다! 질문이 있습니다!</p>
+                  <div class="btn-area">
+                    <button class="btn-mini btn-primary">고정</button>
+                    <button class="btn-mini btn-primary">공감</button>
+                    <button class="btn-mini btn-primary">삭제</button>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            poll
+          </div>
+
+          <div>
+            slide
+          </div>
         </div>
       </div>
     </div>
   </div>
+
   <script>
     var eventCode = {{ event.code }};
 

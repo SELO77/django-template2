@@ -1,22 +1,23 @@
 {% extends "account/base.html" %}
-
 {% load i18n %}
 {% load account socialaccount %}
 {% load crispy_forms_tags %}
 
-{% block head_title %}{% trans "로그인" %}{% endblock %}
+{% block head_title %}{% trans "Log In" %}{% endblock %}
 
 {% block inner %}
-  <h1>{% trans "로그인" %}</h1>
+  <h1>{% trans "Log In" %}</h1>
 
   <form class="login" method="POST" action="{% url 'account_login' %}">
-    {% csrf_token %}
-    {{ form|crispy }}
-    {% if redirect_field_value %}
-    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-    {% endif %}
-    <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-    <button class="primaryAction btn btn-primary" type="submit">{% trans "Log In" %}</button>
+    <div class="form-area">
+      {% csrf_token %}
+      {{ form|crispy }}
+      {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+      {% endif %}
+      <a class="link-forgot-pw secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+    </div>
+    <button class="btn btn-primary primaryAction" type="submit">{% trans "Log In" %}</button>
   </form>
 
   {% get_providers as socialaccount_providers %}
@@ -36,7 +37,7 @@
     {% include "socialaccount/snippets/login_extra.html" %}
 
     {% else %}
-    <p>{% blocktrans %}If you have not created an account yet, then please
+    <p class="txt-below-form">{% blocktrans %}If you have not created an account yet, then please
     <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
   {% endif %}
 {% endblock %}

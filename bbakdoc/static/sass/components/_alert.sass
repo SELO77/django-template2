@@ -8,13 +8,38 @@ $red: #b94a48
 // bootstrap alert CSS, translated to the django-standard levels of
 // debug, info, success, warning, error
 
-.alert-debug 
+@keyframes alert-show
+  10%, 80%
+    bottom: 0
+
+.navbar + .alert
+  position: fixed
+  bottom: -100px
+  left: 0
+  right: 0
+  display: flex
+  justify-content: center
+  align-items: center
+  height: 48px
+  border-radius: 0
+  background-color: rgba(#fff, 0.5)
+  text-align: center
+  z-index: 1000
+  animation: alert-show 3s
+
+.alert
+  padding: 4px 8px
+  border-radius: 2px
+  font-size: 12px
+
+.alert-success,
+.alert-debug
   background-color: $white
   border-color: $mint-green
   color: $black
 
-
-.alert-error 
+.alert-danger,
+.alert-error
   background-color: $pink
   border-color: $dark-pink
   color: $red

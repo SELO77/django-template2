@@ -3,9 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from bbakdoc.events.models import Event
 
-
 TITLE = 'title'
-
 
 class EventCreateForm(forms.ModelForm):
     def clean_title(self):
@@ -15,8 +13,8 @@ class EventCreateForm(forms.ModelForm):
         model = Event
         fields = (TITLE, )
         labels = {
-            TITLE: _('타이틀')
+            TITLE: _('')
         }
-        help_texts = {
-            TITLE: _('이벤트 타이틀을 입력해주세요.')
+        widgets = {
+            TITLE: forms.TextInput(attrs={'placeholder': '이벤트명을 입력해주세요'})
         }

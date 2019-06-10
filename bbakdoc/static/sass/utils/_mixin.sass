@@ -2,3 +2,21 @@
   @media (any-hover: hover)
     &:hover
       @content
+
+$breakpoint: 640px
+
+@mixin pc-style
+  @media (min-width: $breakpoint)
+    @content
+
+@mixin mobile-style
+  @media (max-width: $breakpoint - 1px)
+    @content
+
+@mixin removeGutter
+  margin-left: -16px
+  margin-right: -16px
+
+@mixin addGutter
+  padding-left: 16px
+  padding-right: 16px

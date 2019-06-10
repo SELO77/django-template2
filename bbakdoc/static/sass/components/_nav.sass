@@ -1,33 +1,73 @@
-.navbar
+.menu-area
   position: fixed
   top: 0
   left: 0
-  right: 0
-  display: flex
-  justify-content: space-between
-  align-items: center
-  padding: 0 16px
-  height: $nav-height
+  display: inline-block
+  padding: 17px 15px
+  font-size: 16px
+  color: #fff
+  transition: padding .3s ease
+  z-index: 100
+  cursor: pointer
+  @include pc-style
+    display: none
 
-  .nav-home
+  .bar
     display: block
-    width: 40px
-    height: 40px
-    font-size: 0
-    background:
-      image: url('/static/images/img_logo_symbol.png')
-      repeat: no-repeat
-      size: contain
-      position: center
-      
+    margin-left: 0
+    width: 1.125em
+    height: 2px
+    background-color: #fff
+    transition: all .3s ease
+
+    & + .bar
+      margin-top: 4px
+
+.navbar.is-active
+  .menu-area
+    .bar:nth-of-type(1)
+      transform: translateY(5px) rotate(-45deg)
+    .bar:nth-of-type(2)
+      margin-left: 1.125em
+      width: 0
+      opacity: 0
+    .bar:nth-of-type(3)
+      transform: translateY(-7px) rotate(45deg)
+
+.navbar
+  position: fixed
+  top: 0
+  display: flex
+  flex-direction: column
+  width: 100%
+  background-color: rgba($deepblue700, 0.9)
+  z-index: 100
+  @include mobile-style
+    bottom: 0
+    left: -130%
+    z-index: 10
+    transition: left 0.5s
+    &.is-active
+      left: 0
+
   .nav-list
     display: flex
+    flex-direction: column
     list-style: none
+    padding-top: 48px
+    @include pc-style
+      padding: 0
+      flex-direction: row
 
   .nav-link
     display: flex
+    justify-content: center
     align-items: center
     padding: 0 16px
     height: 48px
     font-size: 14px
     color: #fff
+    @include pc-style
+      justify-content: flex-start
+      height: $nav-height
+      font-size: 12px

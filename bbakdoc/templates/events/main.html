@@ -1,28 +1,43 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% block title %}Events{% endblock title %}
 
 {% block content %}
   <div class="container">
-    <div>
-      <div>Active</div>
-      <div>Past</div>
-    </div>
+    <div class="page-content events-page">
+      <h1 class="page-header">Events</h1>
 
-    <h1>My Events List</h1>
-    {% if my_events_list%}
-      <ul>
-        {% for event in my_events_list %}
-          <li>
-            <a href="{{ event.get_absolute_url }}"><strong>{{ event.title }}</strong></a> ({{event.code}}),
-            <a href="/events/{{ event.id }}/activate/"><button>{% if event.is_active %} Deactivate {% else %} Activate {% endif %}</button></a>
-          </li>
-        {% endfor %}
-      </ul>
-    {% else %}
-      <p>There are no Events.</p>
-    {% endif %}
-  
-    <button type="button" id="room-name-submit" class="btn btn-primary">Create Event</button>
+      <div class="page-body">
+        <ul class="ui-tab">
+          <li class="ui-tab-item is-active">Active</li>
+          <li class="ui-tab-item">Past</li>
+        </ul>
+
+        {% if my_events_list%}
+          <ul class="event-list">
+            {% for event in my_events_list %}
+              <li class="event-item">
+{#                <a class="event-link" href="{{ event.get_absolute_url }}">#}
+{#              임시로 링크 수정했습니다 #}
+                <a class="event-link" href="/events/rooms/1001">
+                  <span class="event-title">{{ event.title }}</span>
+                  <span class="event-code">{{ event.code }}</span>
+                </a>
+                {% if event.is_active %}
+                  <a class="btn-normal btn-secondary btn-status" href="/events/{{ event.id }}/activate/">Deactivate</a>
+                {% else %}
+                  <a class="btn-normal btn-primary btn-status" href="/events/{{ event.id }}/activate/">Activate</a>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>There are no Events.</p>
+        {% endif %}
+
+        <button type="button" id="room-name-submit" class="btn btn-primary btn-create">Create Event</button>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -31,9 +46,3 @@
     };
   </script>
 {% endblock %}
-
-{#{% block javascript %}#}
-{#  <script type="text/javascript">#}
-{#  #}
-{#  </script>#}
-{#{% endblock %}#}

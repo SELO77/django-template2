@@ -3,16 +3,16 @@
 
 {% block content %}
   <div class="container">
-    <h1>Title: {{ event.title }}</h1>
-    <p><strong>Code:</strong> <a href="">{{ event.code }}</a></p>
-    <!-- author detail link not yet defined -->
-    <p><strong>Active:</strong> {{ event.is_active }}</p>
-    <p><strong>Past:</strong> {{ event.is_end }}</p>
+    <div class="page-content">
+      <h1 class="page-header">Title: {{ event.title }}</h1>
+      <!-- author detail link not yet defined -->
+      <div class="page-body">
+        <ul class="ui-tab">
+          <li class="ui-tab-item is-active">Active</li>
+          <li class="ui-tab-item">Past</li>
+        </ul>
+
+      </div>
+    </div>
   </div>
 {% endblock %}
-
-{#{% block javascript %}#}
-{#  <script type="text/javascript">#}
-{#  #}
-{#  </script>#}
-{#{% endblock %}#}

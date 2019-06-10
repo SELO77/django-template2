@@ -1,5 +1,4 @@
 {% extends "account/base.html" %}
-
 {% load i18n %}
 {% load account socialaccount %}
 {% load crispy_forms_tags %}
@@ -18,7 +17,7 @@
       {% endif %}
       <a class="link-forgot-pw secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
     </div>
-    <button class="primaryAction btn btn-primary" type="submit">{% trans "Log In" %}</button>
+    <button class="btn btn-primary primaryAction" type="submit">{% trans "Log In" %}</button>
   </form>
 
   {% get_providers as socialaccount_providers %}

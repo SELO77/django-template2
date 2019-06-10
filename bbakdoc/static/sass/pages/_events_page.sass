@@ -1,0 +1,50 @@
+.events-page
+  .page-body
+    padding: 0
+    background-color: transparent
+
+  .event-list
+    margin: 16px 0
+
+  .event-item
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding: 16px
+    height: 72px
+    border-radius: 4px
+    background-color: rgba(#fff, 0.9)
+    &:not(:first-child)
+      margin-top: 8px
+      border-top: 1px solid $navy100
+
+    .event-title
+      font-weight: 700
+      color: $primary
+
+    .event-code
+      margin-left: 0.3em
+      color: $primary
+      &::before
+        content: '#'
+
+    .btn-status
+      display: inline-flex
+      width: auto
+      min-width: 80px
+
+  .event-link
+    display: flex
+    align-items: center
+    width: 100%
+    height: 100%
+
+  .btn-create
+    //position: fixed
+    //bottom: 48px
+    //right: 16px
+    //display: inline-flex
+    //width: auto
+    //min-width: 48px
+    //border-radius: 100%
+    //font-size: 24px

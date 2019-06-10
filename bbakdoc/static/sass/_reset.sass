@@ -1,7 +1,19 @@
+#djDebug #djDebugToolbarHandle
+  top: auto !important
+  bottom: 30px
+
+[hidden], .hidden
+  display: none !important
+
 body
   margin: 0
-  background-color: $primary
   font-family: $font-set
+  font-size: 14px
+  color: #222
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  @include pc-style
+    font-size: 16px
 
   *
     margin: 0
@@ -9,6 +21,21 @@ body
 
   *, *:before, *:after
     box-sizing: border-box
+
+h1
+  font-size: 1.2em
+h2,
+.h2-area
+  margin-bottom: 0.3em
+  font-size: 1.1em
+h2 + p,
+.h2-area + p
+  margin-bottom: 8px
+  font-size: 14px
+h3
+  font-size: 1.05em
+p
+  font-size: 0.85em
 
 ol, ul
   list-style: none
@@ -25,15 +52,17 @@ fieldset
 legend
   display: none
 
-input,
+input[type="text"],
 button
   font-family: $font-set
   border: 0
   background-color: transparent
   -webkit-appearance: none
 
-input[type="checkbox"]
-  -webkit-appearance: checkbox
+input[type="radio"]
+  margin-right: 6px
+  vertical-align: middle
+  transform: translateY(1px)
 
 button
   cursor: pointer

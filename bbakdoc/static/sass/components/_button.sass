@@ -2,17 +2,94 @@
   display: flex
   justify-content: center
   align-items: center
+  padding: 0 8px
   width: 100%
   border-radius: 4px
+  transition: all 0.2s
+
+@mixin btn-mini
+  display: inline-flex
+  padding: 0 6px 1px
+  width: auto
+  height: 20px
+  font-size: 10px
+
+@mixin btn-small
+  height: 24px
+  font-size: 12px
+  font-weight: 500
+
+@mixin btn-normal
+  height: 32px
+  font-size: 14px
+  font-weight: 500
+
+@mixin btn-large
   height: 48px
   font-size: 16px
   font-weight: 700
-  transition: all 0.2s
 
-.btn-solid-navy,
+button[class*="btn-"]
+  &:focus
+    outline: none
+
 .btn-primary
   @include btn-default
-  background-color: mix(black, $primary, 50%)
+  background-color: $mustard
+  color: $deepblue
+  @include hover
+    background-color: $mustard600
+  &:focus
+    background-color: $mustard600
+
+.btn-secondary
+  @include btn-default
+  background-color: $deepblue700
   color: #fff
   @include hover
-    background-color: mix(black, $primary, 70%)
+    background-color: $deepblue900
+  &:focus
+    background-color: $deepblue900
+
+.btn-line-navy
+  @include btn-default
+  border: 1px solid $navy
+  font-weight: 500
+  @include hover
+    background-color: rgba($navy, 0.1)
+
+.btn-line-mustard
+  @include btn-default
+  border: 1px solid $mustard
+  font-weight: 500
+  @include hover
+    background-color: rgba($mustard, 0.1)
+
+.btn
+  margin-top: 8px
+
+.btn,
+.btn-large
+  @include btn-large
+
+.btn-normal
+  @include btn-normal
+
+.btn-small
+  @include btn-small
+
+.btn-mini
+  @include btn-mini
+
+.btn-mini-round
+  @include btn-mini
+  border-radius: 10px
+
+.btn-in-row
+  display: flex
+  margin-top: 16px
+  button
+    margin-top: 0
+    flex: 1
+    & + button
+      margin-left: 8px
